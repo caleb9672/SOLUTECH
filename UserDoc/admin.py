@@ -15,3 +15,11 @@ class AdminDocument(admin.ModelAdmin):
 class AdminPaie(admin.ModelAdmin):
     list_display = ['id', 'salarie', "totalHeureTravail", "revenuNet"]
 
+@admin.register(models.Conge)
+class AdminConge(admin.ModelAdmin):
+    list_display = ['id', 'salarieConge', "dateDebutConge", "dateFinConge", "typeConge", "statutConge"]
+
+@admin.register(models.Enregistrement)
+class AdminConge(admin.ModelAdmin):
+    list_display = ['id', 'salarieEnregistrement', "jour", "heureArrive", "heureDepart"]
+
