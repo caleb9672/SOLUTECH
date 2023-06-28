@@ -71,14 +71,27 @@ class Paie(models.Model):
 
         return f"{self.id}"
 
-    def calculheuretotal(self):
-        self.totalHeureTravail = self.heureNormalTravail + self.heureSupplementaire
+class Conge(models.Model):
+    statusConges = [
+        ("0", "Approuve"),
+        ("1", "Refuser"),
+    ]
+    salarieConge = models.ForeignKey(Salarie, on_delete=models.SET_NULL, null=True)
+    dateDebutConge = models.DateField()
+    dateFinConge = models.DateField()
+    typeConge = models.CharField(max_length=50)
+    descriptifConge = models.TextField(max_length=300)
+    statutConge = models.CharField(max_length=10, blank=True, null=True)
+    motifstatutConge = models.TextField(max_length=300, blank=True, null=True)
 
-    def calculrevenunet(self):
-        self.revenuNet = self.revenuBrut - (self.cotisationSociale + self.impotRevenu)
+    def __str__(self):
+        return f"{self.id}"
 
-    def save(self):
-        self.calculheuretotal()
-        self.calculrevenunet()
-        super().save()
+class Enregistrement(models.Model):
+    salarieEnregistrement = models.ForeignKey(Salarie, on_delete=models.CASCADE)
+    jour = models.DateField()
+    heureArrive = models.TimeField()
+    heureDepart = models.TimeField(blank=True, null=True)
 
+    def __str__(self):
+        return f"{self.salarieEnregistrement}"
