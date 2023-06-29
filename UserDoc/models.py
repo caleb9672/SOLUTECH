@@ -1,6 +1,14 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
+class Departement(models.Model):
+    idDepartement = models.CharField(max_length=10)
+    nomDepartement = models.CharField(max_length=100)
+    chefDepartement = models.OneToOneField(User, on_delete=models.SET_NULL, null=True)
+
+    def __str__(self):
+        return self.nomDepartement
 
 class Utilisateur(models.Model):
     sexes = [
@@ -40,7 +48,7 @@ class Administrateur(Utilisateur):
     pass
 
 class Salarie(Utilisateur):
-    departement = models.CharField(max_length=100)
+    departement = models.ForeignKey(Departement, on_delete=models.SET_NULL, null=True)
     fonction = models.CharField(max_length=100)
     typeContract = models.CharField(max_length=100)
     salaireBase = models.FloatField()
@@ -81,7 +89,7 @@ class Conge(models.Model):
     dateFinConge = models.DateField()
     typeConge = models.CharField(max_length=50)
     descriptifConge = models.TextField(max_length=300)
-    statutConge = models.CharField(max_length=10, blank=True, null=True)
+    statutConge = models.CharField(max_length=10, blank=True, null=True, choices=statusConges)
     motifstatutConge = models.TextField(max_length=300, blank=True, null=True)
 
     def __str__(self):
