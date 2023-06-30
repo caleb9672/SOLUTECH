@@ -4,11 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb58f83a-490b-4e2e-9f1e-2c955c4e31b9" name="Changes" comment="" />
+    <list default="true" id="eb58f83a-490b-4e2e-9f1e-2c955c4e31b9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/UserDoc/templates/creationSalarie.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserDoc/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/UserDoc/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserDoc/templates/profil.html" beforeDir="false" afterPath="$PROJECT_DIR$/UserDoc/templates/profil.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserDoc/templates/salarie.html" beforeDir="false" afterPath="$PROJECT_DIR$/UserDoc/templates/salarie.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserDoc/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/UserDoc/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserDoc/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/UserDoc/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/documents_importants/planning_du_stage.docx" beforeDir="false" afterPath="$PROJECT_DIR$/documents_importants/planning_du_stage.docx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="HTML File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -24,11 +41,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Deuxième année/Class 2/Semestre Mousson/stage/SOLUTECH/UserDoc/static/images&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Deuxième année\Class 2\Semestre Mousson\stage\SOLUTECH\UserDoc\static\images" />
+      <recent name="D:\Deuxième année\Class 2\Semestre Mousson\stage\SOLUTECH\UserDoc\templates" />
+      <recent name="D:\Deuxième année\Class 2\Semestre Mousson\stage\SOLUTECH\UserDoc\static" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -38,8 +68,14 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1687886673638</updated>
+      <workItem from="1688039823971" duration="18974000" />
+      <workItem from="1688137181252" duration="578000" />
+      <workItem from="1688138347817" duration="7997000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

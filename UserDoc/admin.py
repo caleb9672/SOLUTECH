@@ -23,3 +23,7 @@ class AdminConge(admin.ModelAdmin):
 class AdminConge(admin.ModelAdmin):
     list_display = ['id', 'salarieEnregistrement', "jour", "heureArrive", "heureDepart"]
 
+@admin.register(models.Departement)
+class AdminDepartement(admin.ModelAdmin):
+    list_display = ['id', 'nomDepartement', "chefDepartement"]
+
