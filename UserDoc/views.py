@@ -5,7 +5,7 @@ from django.views import View
 # classe mappant le fichier accueil.html
 class HomeView(View):
     def get(self, request):
-        return render(request, 'base.html', locals())
+        return render(request, 'accueil.html', locals())
 
 # classe mappant le fichier salarie.html
 class Salarie(View):
@@ -28,6 +28,10 @@ class Calendrier(View):
         return render(request, 'calendrier.html', locals())
 
 # classe mappant le fichier Parametre.html
+class Paie(View):
+    def get(self, request):
+        return render(request, 'paie.html', locals())
+
 class Parametre(View):
     def get(self, request):
         return render(request, 'parametre.html', locals())
@@ -43,3 +47,7 @@ class Logout(View):
 class Registration(View):
     def get(self, request):
         return render(request, 'registration.html', locals())
+
+class Profil(View):
+    def get(self, request):
+        return render(request, 'profil.html', locals())
