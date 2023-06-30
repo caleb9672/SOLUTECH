@@ -51,3 +51,7 @@ class Registration(View):
 class Profil(View):
     def get(self, request):
         return render(request, 'profil.html', locals())
+
+class CreationSalarie(View):
+    def get(self, request):
+        return render(request, 'creationSalarie.html', locals())

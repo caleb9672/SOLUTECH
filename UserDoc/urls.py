@@ -16,6 +16,7 @@ urlpatterns = [
     path('logout', views.Logout.as_view(), name='logout'),
     path('registration', views.Registration.as_view(), name='registration'),
     path('profil', views.Profil.as_view(), name='profil'),
+    path('creationSalarie', views.CreationSalarie.as_view(), name='creationSalarie'),
 
 
 
