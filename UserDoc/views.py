@@ -5,7 +5,7 @@ from django.views import View
 # classe mappant le fichier accueil.html
 class HomeView(View):
     def get(self, request):
-        return render(request, 'acceuil.html', locals())
+        return render(request, 'base.html', locals())
 
 # classe mappant le fichier salarie.html
 class Salarie(View):
