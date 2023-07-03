@@ -5,14 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eb58f83a-490b-4e2e-9f1e-2c955c4e31b9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/UserDoc/templates/creationSalarie.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UserDoc/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UserDoc/migrations/0016_alter_salarie_departement_delete_departement.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UserDoc/migrations/0017_rename_cinutilisateur_administrateur_cni_and_more.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UserDoc/migrations/0018_alter_administrateur_photo_alter_salarie_photo.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UserDoc/migrations/0019_remove_administrateur_contrat_and_more.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UserDoc/migrations/0020_rename_contats_administrateur_contacts_and_more.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UserDoc/templates/mesdocuments.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserDoc/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/UserDoc/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserDoc/templates/profil.html" beforeDir="false" afterPath="$PROJECT_DIR$/UserDoc/templates/profil.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserDoc/templates/salarie.html" beforeDir="false" afterPath="$PROJECT_DIR$/UserDoc/templates/salarie.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserDoc/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/UserDoc/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserDoc/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/UserDoc/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserDoc/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/UserDoc/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserDoc/templates/conge.html" beforeDir="false" afterPath="$PROJECT_DIR$/UserDoc/templates/conge.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserDoc/templates/creationSalarie.html" beforeDir="false" afterPath="$PROJECT_DIR$/UserDoc/templates/creationSalarie.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserDoc/templates/document.html" beforeDir="false" afterPath="$PROJECT_DIR$/UserDoc/templates/document.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserDoc/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/UserDoc/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserDoc/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/UserDoc/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/documents_importants/planning_du_stage.docx" beforeDir="false" afterPath="$PROJECT_DIR$/documents_importants/planning_du_stage.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,8 +32,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -71,6 +81,11 @@
       <workItem from="1688039823971" duration="18974000" />
       <workItem from="1688137181252" duration="578000" />
       <workItem from="1688138347817" duration="7997000" />
+      <workItem from="1688195474525" duration="603000" />
+      <workItem from="1688202449443" duration="47000" />
+      <workItem from="1688202775484" duration="20081000" />
+      <workItem from="1688278020233" duration="30753000" />
+      <workItem from="1688377071313" duration="26055000" />
     </task>
     <servers />
   </component>

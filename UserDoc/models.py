@@ -2,13 +2,13 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
-class Departement(models.Model):
-    idDepartement = models.CharField(max_length=10)
-    nomDepartement = models.CharField(max_length=100)
-    chefDepartement = models.OneToOneField(User, on_delete=models.SET_NULL, null=True)
+#class Departement(models.Model):
+#    idDepartement = models.CharField(max_length=10)
+#    nomDepartement = models.CharField(max_length=100)
+#    chefDepartement = models.OneToOneField(User, on_delete=models.SET_NULL, null=True)
 
-    def __str__(self):
-        return self.nomDepartement
+#    def __str__(self):
+#        return self.nomDepartement
 
 class Utilisateur(models.Model):
     sexes = [
@@ -19,25 +19,25 @@ class Utilisateur(models.Model):
         ("M", "Marié(e)"),
         ("C", "Celibataire(e)"),
     ]
-    idUtilisateur = models.CharField(max_length=10)
-    nomUtilisateur = models.CharField(max_length=50)
-    prenomUtilisateur = models.CharField(max_length=100)
-    codePostal = models.CharField(max_length=10)
-    emailUtilisateur = models.EmailField(max_length=100)
-    contactUtilisateur = models.CharField(max_length=12)
-    sexeUtilisateur = models.CharField(max_length=10, choices=sexes)
-    CINUtilisateur = models.CharField(max_length=20)
-    CNSSUtilisateur = models.CharField(max_length=10)
-    staturProfession = models.CharField(max_length=10, choices=statuts)
+
+    nom = models.CharField(max_length=50)
+    prenom = models.CharField(max_length=100)
+    sexe = models.CharField(max_length=10, choices=sexes)
+    dateNaissance = models.DateField(null=True)
+    photo = models.ImageField(blank=True, null=True)
+    contacts = models.CharField(max_length=100, null=True)
+    email = models.EmailField(max_length=100)
+    statut = models.CharField(max_length=10, choices=statuts)
     nbrEnfant = models.IntegerField(blank=True)
-    adresse = models.CharField(max_length=50)
-    ville = models.CharField(max_length=50)
     pays = models.CharField(max_length=50)
-    photo = models.ImageField(blank=True)
-    profession = models.CharField(max_length=50)
-    dateEmbauche = models.DateField()
+    ville = models.CharField(max_length=50)
+    quartier = models.CharField(max_length=100, null=True)
+    codePostal = models.CharField(max_length=10)
+    cni = models.CharField(max_length=20)
+    cnss = models.CharField(max_length=10)
     hautDegreQualification = models.CharField(max_length=50)
     certification = models.CharField(max_length=100)
+
 
     class Meta:
         abstract = True
@@ -48,13 +48,19 @@ class Administrateur(Utilisateur):
     pass
 
 class Salarie(Utilisateur):
-    departement = models.ForeignKey(Departement, on_delete=models.SET_NULL, null=True)
-    fonction = models.CharField(max_length=100)
-    typeContract = models.CharField(max_length=100)
+    departements = [
+        ('1', "Informatique"),
+        ('2', "Commerciale"),
+        ('3', "Techniciens"),
+    ]
+    departement = models.CharField(max_length=100, choices=departements, null=True)
+    poste = models.CharField(max_length=150, null=True)
+    contrat = models.CharField(max_length=10, null=True)
+    dateEmbauche = models.DateField()
     salaireBase = models.FloatField()
 
     def __str__(self):
-        return self.nomUtilisateur + " " + self.prenomUtilisateur
+        return self.nom + " " + self.prenom
 
 class Document(models.Model):
     titreDocument = models.CharField(max_length=100)

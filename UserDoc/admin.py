@@ -4,7 +4,7 @@ from UserDoc import models
 
 @admin.register(models.Salarie)
 class AdminUtilisateur(admin.ModelAdmin):
-    list_display = ['idUtilisateur', 'nomUtilisateur', 'prenomUtilisateur', 'emailUtilisateur', 'sexeUtilisateur']
+    list_display = ['nom', 'prenom', 'email', 'sexe']
 
 
 @admin.register(models.Document)
@@ -23,7 +23,4 @@ class AdminConge(admin.ModelAdmin):
 class AdminConge(admin.ModelAdmin):
     list_display = ['id', 'salarieEnregistrement', "jour", "heureArrive", "heureDepart"]
 
-@admin.register(models.Departement)
-class AdminDepartement(admin.ModelAdmin):
-    list_display = ['id', 'nomDepartement', "chefDepartement"]
 

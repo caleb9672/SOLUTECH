@@ -19,5 +19,8 @@ urlpatterns = [
     path('registration', views.Registration.as_view(), name='registration'),
     path('profil', views.Profil.as_view(), name='profil'),
     path('document', views.Document.as_view(), name='document'),
+    path('mesdocuments', views.Mesdocuments.as_view(), name='mesdocuments'),
+
+
 
 ]+static(SOLUTECH.settings.MEDIA_URL, document_root=SOLUTECH.settings.MEDIA_ROOT)

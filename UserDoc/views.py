@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
 from django.views import View
+from django.contrib.auth.models import User
 from django.urls import reverse
+from UserDoc import models
 # Create your views here.
-
+from UserDoc.forms import LoginForm
 # classe mappant le fichier accueil.html
 class HomeView(View):
     def get(self, request):
@@ -54,9 +56,52 @@ class Profil(View):
         return render(request, 'profil.html', locals())
 
 class CreationSalarie(View):
+
     def get(self, request):
+        form = LoginForm()
         return render(request, 'creationSalarie.html', locals())
 
+    def post(self, request):
+
+        nom = request.POST.get('nom')
+        prenom = request.POST.get('prenom')
+        dateNaissance = request.POST.get('datenaissance')
+        photo = request.POST.get('photo')
+        sexe = request.POST.get('sexe')
+        contacts = request.POST.get('contacts')
+        email = request.POST.get('email')
+        statut = request.POST.get('statut')
+        nbrEnfant = request.POST.get('nbrEnfant')
+        pays = request.POST.get('pays')
+        ville = request.POST.get('ville')
+        quartier = request.POST.get('quartier')
+        codePostal = request.POST.get('codePostal')
+        cni = request.POST.get('cni')
+        cnss = request.POST.get('cnss')
+        hautDegreQualification = request.POST.get('hautDegreQualification')
+        certification = request.POST.get('certification')
+        dateEmbauche = request.POST.get('dateEmbauche')
+        departement = request.POST.get('departement')
+        poste = request.POST.get('poste')
+        dateEmbauche = request.POST.get('dateEmbauche')
+        contrat = request.POST.get('contrat')
+        salaireBase = request.POST.get('salairebase')
+        print("hello world")
+        salarie = models.Salarie.objects.create(
+            nom=nom, prenom=prenom, sexe=sexe, dateNaissance=dateNaissance,
+            photo=photo, contacts=contacts, email=email, statut=statut, nbrEnfant=nbrEnfant,
+            pays=pays, ville=ville, quartier=quartier, codePostal=codePostal,
+            cni=cni, cnss=cnss, hautDegreQualification=hautDegreQualification,
+            certification=certification, departement=departement,
+            poste=poste, contrat=contrat, dateEmbauche=dateEmbauche, salaireBase=salaireBase)
+        print("welcomme")
+        salarie.save()
+
+        print("hello")
+
+
+        print(nom)
+        return render(request, 'profil.html', locals())
 
 
 class ListeSalarie(View):
@@ -76,3 +121,7 @@ class SalarieStatistique(View):
 class Document(View):
     def get(self, request):
         return render(request, 'document.html', locals())
+
+class Mesdocuments(View):
+    def get(self, request):
+        return render(request, 'mesdocuments.html', locals())

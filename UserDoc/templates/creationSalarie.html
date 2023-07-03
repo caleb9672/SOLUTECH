@@ -14,20 +14,38 @@
 
          <div class="row mb-3" style="align-self: center">
 
-           <label for="profileImage" class="card-title">Image de profil</label>
+           <label class="card-title">Image de profil</label>
            <div >
-             <img src="{% static 'assets/img/profile-img.jpg' %}" alt="Profile">
+
+             <img src="" alt="Profile" id="preview" style="max-width: 100%; max-height: 150px" >
+
              <div class="pt-2">
-               <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>
-               <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>
+               <a href="#" onclick="document.getElementById('fileInput').click(); return false;" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>
+                 <input id="fileInput" type="file" style="display:none;" onchange="previewImage(event);" name="photo">
+
+               <a href="#"  class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>
              </div>
+               <script>
+                  function previewImage(event) {
+                    var input = event.target;
+                    var preview = document.getElementById('preview');
+
+                    var reader = new FileReader();
+                    reader.onload = function() {
+                      preview.src = reader.result;
+                    }
+
+                    reader.readAsDataURL(input.files[0]);
+                  }
+                </script>
+
            </div>
          </div>
 
       </div>
       <section class="section">
-      <div class="row">
 
+      <div class="row">
 
         <div>
 
@@ -37,149 +55,128 @@
 
               <!-- Vertical Form -->
               <div class="col-lg-12">
-                <form class="row g-3" >
+                <form class="row g-3" action="" method="POST">
+
+                    {% csrf_token %}
 
                     <div class="col-5">
-                      <label for="inputNanme4" class="form-label">Nom</label>
-                      <input type="text" class="form-control" id="inputNanme4">
+                      <label for="inputNanme4" class="form-label" >Nom</label>
+                      <input type="text" class="form-control" name="nom" id="nom" style="margin-bottom: 1.5em">
+
+                        <label for="inputNanme4" class="form-label" >Date de naissance</label>
+                          <input type="date" class="form-control" name="datenaissance" style="margin-bottom: 1.5em">
+
+
+
+                        <label for="inputNanme4" class="form-label" >Contact (s)</label>
+                          <input type="text" class="form-control" id="contact" name="contacts" style="margin-bottom: 1em">
+
+                        <label for="inputNanme4" class="form-label" >Statut</label>
+                          <input type="text" class="form-control" id="statut" name="statut" style="margin-bottom: 1em">
+
+                         <label for="inputNanme4" class="form-label" >Pays</label>
+                          <input type="text" class="form-control" id="pays" name="pays" style="margin-bottom: 1em">
+
+                           <label for="inputNanme4" class="form-label" >Quartier</label>
+                          <input type="text" class="form-control" id="inputNanme4" name="quartier" style="margin-bottom: 1em">
+
+                         <label for="inputNanme4" class="form-label">CNI</label>
+                          <input type="text" class="form-control" id="cni" name="cni" style="margin-bottom: 1em">
+
+                         <label for="inputNanme4" class="form-label" >Haut dégré de qualification</label>
+                          <input type="text" class="form-control" name="hautDegreQualification" style="margin-bottom: 1em">
                     </div>
-                    <div class="col-2"></div>
+
+                    <div class="col-2">
+
+
+                    </div>
+
                     <div class="col-5">
-                      <label for="inputEmail4" class="form-label">Prénom(s)</label>
-                      <input type="email" class="form-control" id="inputEmail4">
-                    </div>
+                      <label for="inputEmail4" class="form-label" >Prénom(s)</label>
+                      <input type="text" class="form-control" id="prenom" name="prenom" style="margin-bottom: 1em">
 
-                  <div class="col-5">
-                      <label for="inputNanme4" class="form-label">Date de naissance</label>
-                      <input type="text" class="form-control" id="inputNanme4">
-                    </div>
-                    <div class="col-2"></div>
-                    <div class="col-5">
-                      <label for="inputEmail4" class="form-label">Sexe</label>
-                      <input type="email" class="form-control" id="inputEmail4">
-                    </div>
 
-                  <div class="col-5">
-                      <label for="inputNanme4" class="form-label">Contact (s)</label>
-                      <input type="text" class="form-control" id="inputNanme4">
-                    </div>
-                    <div class="col-2"></div>
-                    <div class="col-5">
-                      <label for="inputEmail4" class="form-label">Adresse Mail</label>
-                      <input type="email" class="form-control" id="inputEmail4">
-                    </div>
 
-                  <div class="col-5">
-                      <label for="inputNanme4" class="form-label">Statut</label>
-                      <input type="text" class="form-control" id="inputNanme4">
-                    </div>
-                    <div class="col-2"></div>
-                    <div class="col-5">
-                      <label for="inputEmail4" class="form-label">Nombre d'enfants</label>
-                      <input type="email" class="form-control" id="inputEmail4">
-                    </div>
+                        <label for="inputEmail4" class="form-label" >Sexe</label>
+                          <input type="text" class="form-control" id="sexe" name="sexe" style="margin-bottom: 1em">
 
-                  <div class="col-5">
-                      <label for="inputNanme4" class="form-label">Pays</label>
-                      <input type="text" class="form-control" id="inputNanme4">
-                    </div>
-                    <div class="col-2"></div>
-                    <div class="col-5">
-                      <label for="inputEmail4" class="form-label">Ville</label>
-                      <input type="email" class="form-control" id="inputEmail4">
-                    </div>
+                        <label for="inputEmail4" class="form-label" >Adresse Mail</label>
+                          <input type="email" class="form-control" id="mail" name="email" style="margin-bottom: 1em">
 
-                  <div class="col-5">
-                      <label for="inputNanme4" class="form-label">Quartier</label>
-                      <input type="text" class="form-control" id="inputNanme4">
-                    </div>
-                    <div class="col-2"></div>
-                    <div class="col-5">
-                      <label for="inputEmail4" class="form-label">Boîte postale(s)</label>
-                      <input type="email" class="form-control" id="inputEmail4">
+                        <label for="inputEmail4" class="form-label" >Nombre d'enfants</label>
+                          <input type="number" class="form-control" id="enfant" name="nbrEnfant" style="margin-bottom: 1em">
+
+                        <label for="inputEmail4" class="form-label" >Ville</label>
+                          <input type="text" class="form-control" id="ville" name="ville" style="margin-bottom: 1em">
+
+                         <label for="inputEmail4" class="form-label" >Boîte postale(s)</label>
+                          <input type="text" class="form-control" id="inputEmail4" name="codePostal" style="margin-bottom: 1em">
+
+                          <label for="inputNanme4" class="form-label">CNSS</label>
+                          <input type="text" class="form-control" id="cnss" name="cnss" style="margin-bottom: 1em">
+
+                        <label for="inputEmail4" class="form-label" >Certification(s)</label>
+                          <input type="text" class="form-control" id="certification" name="certification" style="margin-bottom: 1em">
+                        
                     </div>
 
 
 
-                  <div class="col-5">
-                      <label for="inputNanme4" class="form-label">CNI</label>
-                      <input type="text" class="form-control" id="inputNanme4">
+                    <!-- Rubique des informations concernant le poste -->
+
+                    <h5 class="card-title">&nbsp;&nbsp;&nbsp;Informations sur le poste</h5>
+
+                    <div class="col-md-12">
+                      <div class="form-floating">
+                        <input type="text" class="form-control" id="floatingName" name="departement" placeholder="Département">
+                        <label for="floatingName">Département</label>
+                      </div>
                     </div>
-                    <div class="col-2"></div>
-                    <div class="col-5">
-                      <label for="inputNanme4" class="form-label">CNSS</label>
-                      <input type="text" class="form-control" id="inputNanme4">
+                    <div class="col-md-6">
+                      <div class="form-floating">
+                        <input type="text" class="form-control" name="poste" id="floatingEmail" placeholder="Poste occupé">
+                        <label for="floatingEmail">Poste occupé</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-floating">
+                        <input type="date" class="form-control" name="dateEmbauche" id="floatingPassword" placeholder="Superviseur">
+                        <label for="floatingPassword">Date d'embauche</label>
+                      </div>
                     </div>
 
-                </form><!-- Vertical Form -->
+                    <div class="col-md-6">
+                      <div class="form-floating mb-3">
+                        <select class="form-select" id="floatingSelect" aria-label="contrat" name="contrat">
+                          <option selected="" value="CDI">CDI</option>
+                          <option value="CDD">CDD</option>
+                        </select>
+                        <label for="floatingSelect">Type de contrat</label>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-floating">
+                        <input type="number" class="form-control" name="salairebase" placeholder="Salaire de base">
+                        <label>Salaire de base</label>
+                      </div>
+                    </div>
+
+                <button type="submit" class="btn btn-outline-primary" style="margin-bottom: 1em; margin-left: 2em; margin-right: 2em; ">Soumettre le formulaire</button>
+
+                </form>
               </div>
 
             </div>
+
           </div>
 
-
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Informations sur le poste</h5>
-
-              <!-- Floating Labels Form -->
-              <form class="row g-3">
-                <div class="col-md-12">
-                  <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingName" placeholder="Département">
-                    <label for="floatingName">Département</label>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-floating">
-                    <input type="email" class="form-control" id="floatingEmail" placeholder="Poste occupé">
-                    <label for="floatingEmail">Poste occupé</label>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="form-floating">
-                    <input type="password" class="form-control" id="floatingPassword" placeholder="Superviseur">
-                    <label for="floatingPassword">Superviseur</label>
-                  </div>
-                </div>
-
-                <div class="col-md-3">
-                  <div class="form-floating mb-3">
-                    <select class="form-select" id="floatingSelect" aria-label="Contrat">
-                      <option selected="">CDI</option>
-                      <option value="1">Oregon</option>
-                      <option value="2">DC</option>
-                    </select>
-                    <label for="floatingSelect">Type de contrat</label>
-                  </div>
-                </div>
-                <div class="col-md-5">
-                  <div class="col-md-12">
-                    <div class="form-floating">
-                      <input type="text" class="form-control" id="floatingCity" placeholder="Date d'embauche">
-                      <label for="floatingCity">Date d'embauche</label>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="form-floating">
-                    <input type="text" class="form-control" id="floatingZip" placeholder="Salaire de base">
-                    <label for="floatingZip">Salaire de base</label>
-                  </div>
-                </div>
-               <!-- <div class="text-center">
-                  <button type="submit" class="btn btn-primary">Submit</button>
-                  <button type="reset" class="btn btn-secondary">Reset</button>
-                </div>-->
-              </form><!-- End floating Labels Form -->
-
-            </div>
-          </div>
 
         </div>
 
-
       </div>
+
     </section>
   {% endblock content %}
 
