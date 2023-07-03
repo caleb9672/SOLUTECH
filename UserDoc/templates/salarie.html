@@ -9,9 +9,31 @@
 </head>
 <body>
     {% block content %}
-        Salariés
-        <h3><<a href="{% url 'creationSalarie' %}">creation de salarié </a></h3>
+        <!--<h6><<a href="{% url 'creationSalarie' %}">creation de salarié </a></h6>-->
+        <section class="section">
+
+            <div class="iconslist">
+
+                <div class="icon">
+                    <a href="{% url 'salarieStatistique' %}"><i class="bi bi-graph-up"></i></a>
+                    <div class="label"><a href="{% url 'salarieStatistique' %}">Statistiques </a> </div>
+                </div>
+
+                <div class="icon">
+                    <a href="{% url 'listeSalarie' %}"><i class="bi bi-person-fill"></i></a>
+                    <div class="label"><a href="{% url 'listeSalarie' %}">Liste des salariés </a> </div>
+                </div>
+
+
+            </div>
+    </section>
+    {% block salarie %}
+
+    {% endblock salarie %}
     {% endblock content %}
+
+
+
 
 </body>
 </html>

@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import View
+from django.urls import reverse
 # Create your views here.
 
 # classe mappant le fichier accueil.html
@@ -55,3 +56,23 @@ class Profil(View):
 class CreationSalarie(View):
     def get(self, request):
         return render(request, 'creationSalarie.html', locals())
+
+
+
+class ListeSalarie(View):
+    def get(self, request):
+        return render(request, 'listeSalarie.html', locals())
+
+    def post(self, request):
+        url = reverse('creationSalarie')
+        return redirect(url)
+
+
+
+class SalarieStatistique(View):
+    def get(self, request):
+        return render(request, 'salarieStatistique.html', locals())
+
+class Document(View):
+    def get(self, request):
+        return render(request, 'document.html', locals())

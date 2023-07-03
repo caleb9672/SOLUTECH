@@ -288,24 +288,50 @@
       </li><!-- End Profile Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{% url 'salarie' %}">
+        <a class="nav-link collapsed" href="{% url 'listeSalarie' %}">
           <i class="bi bi-question-circle"></i>
           <span>Salariés</span>
         </a>
-      </li><!-- End F.A.Q Page Nav -->
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{% url 'profil' %}">
+          <i class="bi bi-question-circle"></i>
+          <span>Profil</span>
+        </a>
+      </li>
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="{% url 'conge' %}">
           <i class="bi bi-envelope"></i>
+          <span>Mes Congés et absences</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{% url 'document' %}">
+          <i class="bi bi-card-list"></i>
           <span>Congés et absences</span>
         </a>
-      </li><!-- End Contact Page Nav -->
+      </li>
 
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="{% url 'suiviTemps' %}">
           <i class="bi bi-card-list"></i>
           <span>Suivi du temps</span>
+        </a>
+      </li><!-- End Register Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{% url 'document' %}">
+          <i class="bi bi-card-list"></i>
+          <span>Documents</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{% url 'document' %}">
+          <i class="bi bi-card-list"></i>
+          <span>Mes Documents</span>
         </a>
       </li><!-- End Register Page Nav -->
 
@@ -317,12 +343,7 @@
         </a>
       </li><!-- End Login Page Nav -->
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="{% url 'calendrier' %}">
-          <i class="bi bi-dash-circle"></i>
-          <span>Calendrier</span>
-        </a>
-      </li><!-- End Error 404 Page Nav -->
+<!-- End Error 404 Page Nav -->
       <hr>
       <li class="nav-item">
         <a class="nav-link collapsed" href="{% url 'parametre' %}">

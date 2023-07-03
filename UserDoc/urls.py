@@ -6,7 +6,9 @@ import SOLUTECH
 urlpatterns = [
 
     path('', views.HomeView.as_view(), name='accueil'),
-    path('salarie', views.Salarie.as_view(), name='salarie'),
+    path('listeSalarie', views.ListeSalarie.as_view(), name='listeSalarie'),
+    path('creationSalarie', views.CreationSalarie.as_view(), name='creationSalarie'),
+    path('salarieStatistique', views.SalarieStatistique.as_view(), name='salarieStatistique'),
     path('conge', views.Conge.as_view(), name='conge'),
     path('suiviTemps', views.SuiviTemp.as_view(), name='suiviTemps'),
     path('calendrier', views.Calendrier.as_view(), name='calendrier'),
@@ -16,10 +18,6 @@ urlpatterns = [
     path('logout', views.Logout.as_view(), name='logout'),
     path('registration', views.Registration.as_view(), name='registration'),
     path('profil', views.Profil.as_view(), name='profil'),
-    path('creationSalarie', views.CreationSalarie.as_view(), name='creationSalarie'),
-
-
-
-
+    path('document', views.Document.as_view(), name='document'),
 
 ]+static(SOLUTECH.settings.MEDIA_URL, document_root=SOLUTECH.settings.MEDIA_ROOT)
