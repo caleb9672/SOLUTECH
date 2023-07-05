@@ -20,10 +20,10 @@
              <img src="" alt="Profile" id="preview" style="max-width: 100%; max-height: 150px" >
 
              <div class="pt-2">
-               <a href="#" onclick="document.getElementById('fileInput').click(); return false;" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>
-                 <input id="fileInput" type="file" style="display:none;" onchange="previewImage(event);" name="photo">
 
-               <a href="#"  class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>
+
+
+               <!--<a href="#"  class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>-->
              </div>
                <script>
                   function previewImage(event) {
@@ -51,120 +51,155 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Informations Personnelles</h5>
+              <h5 class="card-title" >
+                  <p>
+                      {% if form.errors %}
+                        <small class="text-danger">
+                            un ou plusieurs champs ne sont pas remplis ou comportent des
+                            erreurs
+                        </small>
+                    {% endif %}
 
-              <!-- Vertical Form -->
-              <div class="col-lg-12">
-                <form class="row g-3" action="" method="POST">
+                      {% if primary_key_errors %}
+                         <small class="text-danger">
+                             {{primary_key_errors}}
+                        </small>
+                      {% endif %}
 
-                    {% csrf_token %}
+                  </p>
+                  Informations Personnelles
+              </h5>
 
-                    <div class="col-5">
-                      <label for="inputNanme4" class="form-label" >Nom</label>
-                      <input type="text" class="form-control" name="nom" id="nom" style="margin-bottom: 1.5em">
-
-                        <label for="inputNanme4" class="form-label" >Date de naissance</label>
-                          <input type="date" class="form-control" name="datenaissance" style="margin-bottom: 1.5em">
-
+                <form method="POST" style="margin-top: 2em" enctype="multipart/form-data" novalidate>
 
 
-                        <label for="inputNanme4" class="form-label" >Contact (s)</label>
-                          <input type="text" class="form-control" id="contact" name="contacts" style="margin-bottom: 1em">
+                    <div class="row g-3">
+                     <div class="col-md-5">
+                        {% csrf_token %}
+                         {{form.nom.label_tag}}<br>
 
-                        <label for="inputNanme4" class="form-label" >Statut</label>
-                          <input type="text" class="form-control" id="statut" name="statut" style="margin-bottom: 1em">
+                        {{form.nom}}
+                        <small class="text-danger">{{form.nom.errors|striptags}}</small>
+                        <br><br>
 
-                         <label for="inputNanme4" class="form-label" >Pays</label>
-                          <input type="text" class="form-control" id="pays" name="pays" style="margin-bottom: 1em">
+                        {{form.photo.label_tag}} {{form.photo}}
+                        <small class="text-danger">{{form.photo.errors|striptags}}</small>
+                        <br><br>
 
-                           <label for="inputNanme4" class="form-label" >Quartier</label>
-                          <input type="text" class="form-control" id="inputNanme4" name="quartier" style="margin-bottom: 1em">
+                         {{form.sexe.label_tag}} {{form.sexe}}
 
-                         <label for="inputNanme4" class="form-label">CNI</label>
-                          <input type="text" class="form-control" id="cni" name="cni" style="margin-bottom: 1em">
+                        <small class="text-danger">{{form.sexe.errors|striptags}}</small>
+                        <br><br>
 
-                         <label for="inputNanme4" class="form-label" >Haut dégré de qualification</label>
-                          <input type="text" class="form-control" name="hautDegreQualification" style="margin-bottom: 1em">
+
+
+                         {{form.email.label_tag}} {{form.email}}
+                        <small class="text-danger">{{form.email.errors|striptags}}</small>
+                        <br><br>
+
+                         {{form.nbrEnfant.label_tag}} {{form.nbrEnfant}}
+                        <small class="text-danger">{{form.nbrEnfant.errors|striptags}}</small>
+                        <br><br>
+
+                         {{form.ville.label_tag}} {{form.ville}}
+                        <small class="text-danger">{{form.ville.errors|striptags}}</small>
+                        <br><br>
+
+                         {{form.codePostal.label_tag}} {{form.codePostal}}
+                        <small class="text-danger">{{form.codePostal.errors|striptags}}</small>
+                        <br><br>
+
+                         {{form.cnss.label_tag}} {{form.cnss}}
+                        <small class="text-danger">{{form.cnss.errors|striptags}}</small>
+                        <br><br>
+
+                         {{form.certification.label_tag}} {{form.certification}}
+                        <small class="text-danger">{{form.certification.errors|striptags}}</small>
+                        <br><br>
+
+                     </div>
+                        <div class="col-md-2"></div>
+                     <div class="col-md-5">
+                        {{form.prenom.label_tag}} {{form.prenom}}
+                        <small class="text-danger">{{form.prenom.errors|striptags}}</small>
+                        <br><br>
+                        {{form.dateNaissance.label_tag}} {{form.dateNaissance}}
+                        <small class="text-danger">{{form.dateNaissance.errors|striptags}}</small>
+                        <br><br>
+                         {{form.contacts.label_tag}} {{form.contacts}}
+                        <small class="text-danger">{{form.contacts.errors|striptags}}</small>
+                        <br><br>
+                        {{form.statut.label_tag}} {{form.statut}}
+                        <small class="text-danger">{{form.statut.errors|striptags}}</small>
+                        <br><br>
+                        {{form.pays.label_tag}} {{form.pays}}
+                        <small class="text-danger">{{form.pays.errors|striptags}}</small>
+                        <br><br>
+                        {{form.quartier.label_tag}} {{form.quartier}}
+                        <small class="text-danger">{{form.quartier.errors|striptags}}</small>
+                        <br><br>
+                        {{form.cni.label_tag}} {{form.cni}}
+                        <small class="text-danger">{{form.cni.errors|striptags}}</small>
+                        <br><br>
+                        {{form.hautDegreQualification.label_tag}} {{form.hautDegreQualification}}
+                        <small class="text-danger">{{form.hautDegreQualification.errors|striptags}}</small>
+                        <br><br>
+                     </div>
                     </div>
-
-                    <div class="col-2">
-
-
-                    </div>
-
-                    <div class="col-5">
-                      <label for="inputEmail4" class="form-label" >Prénom(s)</label>
-                      <input type="text" class="form-control" id="prenom" name="prenom" style="margin-bottom: 1em">
-
-
-
-                        <label for="inputEmail4" class="form-label" >Sexe</label>
-                          <input type="text" class="form-control" id="sexe" name="sexe" style="margin-bottom: 1em">
-
-                        <label for="inputEmail4" class="form-label" >Adresse Mail</label>
-                          <input type="email" class="form-control" id="mail" name="email" style="margin-bottom: 1em">
-
-                        <label for="inputEmail4" class="form-label" >Nombre d'enfants</label>
-                          <input type="number" class="form-control" id="enfant" name="nbrEnfant" style="margin-bottom: 1em">
-
-                        <label for="inputEmail4" class="form-label" >Ville</label>
-                          <input type="text" class="form-control" id="ville" name="ville" style="margin-bottom: 1em">
-
-                         <label for="inputEmail4" class="form-label" >Boîte postale(s)</label>
-                          <input type="text" class="form-control" id="inputEmail4" name="codePostal" style="margin-bottom: 1em">
-
-                          <label for="inputNanme4" class="form-label">CNSS</label>
-                          <input type="text" class="form-control" id="cnss" name="cnss" style="margin-bottom: 1em">
-
-                        <label for="inputEmail4" class="form-label" >Certification(s)</label>
-                          <input type="text" class="form-control" id="certification" name="certification" style="margin-bottom: 1em">
-                        
-                    </div>
-
-
 
                     <!-- Rubique des informations concernant le poste -->
 
-                    <h5 class="card-title">&nbsp;&nbsp;&nbsp;Informations sur le poste</h5>
+                    <h5 class="card-title">Informations sur le poste</h5>
 
                     <div class="col-md-12">
-                      <div class="form-floating">
-                        <input type="text" class="form-control" id="floatingName" name="departement" placeholder="Département">
-                        <label for="floatingName">Département</label>
-                      </div>
+                      {{form.departement.label_tag}} {{form.departement}}
+                        <small class="text-danger">{{form.departement.errors|striptags}}</small>
+                        <br><br>
+                    </div>
+                    <div class="row g-3">
+                    <div class="col-md-6">
+                      {{form.poste.label_tag}} {{form.poste}}
+                        <small class="text-danger">{{form.poste.errors|striptags}}</small>
+                        <br><br>
                     </div>
                     <div class="col-md-6">
-                      <div class="form-floating">
-                        <input type="text" class="form-control" name="poste" id="floatingEmail" placeholder="Poste occupé">
-                        <label for="floatingEmail">Poste occupé</label>
-                      </div>
+                      {{form.contrat.label_tag}} {{form.contrat}}
+                        <small class="text-danger">{{form.contrat.errors|striptags}}</small>
+                        <br><br>
+
                     </div>
                     <div class="col-md-6">
-                      <div class="form-floating">
-                        <input type="date" class="form-control" name="dateEmbauche" id="floatingPassword" placeholder="Superviseur">
-                        <label for="floatingPassword">Date d'embauche</label>
-                      </div>
+                      {{form.dateEmbauche.label_tag}} {{form.dateEmbauche}}
+                        <small class="text-danger">{{form.dateEmbauche.errors|striptags}}</small>
+                        <br><br>
                     </div>
+
+
 
                     <div class="col-md-6">
-                      <div class="form-floating mb-3">
-                        <select class="form-select" id="floatingSelect" aria-label="contrat" name="contrat">
-                          <option selected="" value="CDI">CDI</option>
-                          <option value="CDD">CDD</option>
-                        </select>
-                        <label for="floatingSelect">Type de contrat</label>
-                      </div>
+                      {{form.salaireBase.label_tag}} {{form.salaireBase}}
+                        <small class="text-danger">{{form.salaireBase.errors|striptags}}</small>
+                        <br><br>
                     </div>
 
-                    <div class="col-md-6">
-                      <div class="form-floating">
-                        <input type="number" class="form-control" name="salairebase" placeholder="Salaire de base">
-                        <label>Salaire de base</label>
-                      </div>
+                    <h5 class="card-title">Informations de connexion</h5>
+
+                    <div class="col-md-12">
+                      {{form.departement.label_tag}} {{form.departement}}
+                        <small class="text-danger">{{form.departement.errors|striptags}}</small>
+                        <br><br>
+                        {{form.departement.label_tag}} {{form.departement}}
+                        <small class="text-danger">{{form.departement.errors|striptags}}</small>
+                        <br><br>
                     </div>
-
-                <button type="submit" class="btn btn-outline-primary" style="margin-bottom: 1em; margin-left: 2em; margin-right: 2em; ">Soumettre le formulaire</button>
-
+                        {% if id is None %}
+                            <input type="submit" value="Enregistrer le salarié" name ='enregistrer' class="w-100 py-2 mb-2 btn btn-outline-success rounded-4">
+                            <a href="{% url 'listeSalarie' %}" class="w-100 py-2 mb-2 btn btn-outline-primary rounded-4">Retour </a>
+                        {% else %}
+                            <input type="submit" value="Confirmer la modification" name="modifier" class="w-100 py-2 mb-2 btn btn-outline-success rounded-4">
+                            <a href="{% url 'listeSalarie' %}" class="w-100 py-2 mb-2 btn btn-outline-primary rounded-4">Retour </a>
+                        {% endif %}
+                    </div>
                 </form>
               </div>
 
@@ -178,6 +213,8 @@
       </div>
 
     </section>
+
+
   {% endblock content %}
 
 </body>

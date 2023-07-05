@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block content %}
+  {% block document %}
+  <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Fichiers</h5>
+          <section>
+            <div class="row g-3" style="display: flex; align-items: center; align-content: center">
+              <div class="col-md-8">
+                Télécharger un ou plusieurs fichiers <strong>PDF</strong> (comme des contrats ou des lettres ou tout autre fichier) et envoyer le(s)
+                à vos employés. Ces documents envoyés ne sont visibles que par vous et le(s) récepteur(s) que vous aurez
+                choisis.
+              </div>
+
+              <div class="col-md-4">
+                <form>
+                  <button type="button" class="btn btn-outline-success" style="margin-bottom: 1em; margin-left: 2em">+Télécharger un document</button>
+                </form>
+              </div>
+
+            </div>
+          </section>
+
+          <section style="margin-top: 3em">
+            <hr>
+            <div class="card-body pb-0">
+                  <h5 class="card-title">Selectionner les recepteurs</h5>
+              <div style="display: flex;  margin-top: 2em; margin-bottom: 2em" >
+
+                  <form>
+                    <button class="btn btn-outline-success btn-block" type="submit">Tout selectionner</button>
+                  </form>
+
+              </div>
+                  <table class="table table-borderless">
+                    <thead>
+                      <tr>
+                        <th scope="col">Salariés</th>
+                        <th scope="col">Départements</th>
+                        <th scope="col">Poste</th>
+                        <th scope="col">Statut</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><a href="#" class="text-primary fw-bold">KOKONE Caleb</a></td>
+                        <td>Informatique</td>
+                        <td class="fw-bold">124</td>
+                        <td><i class="bx bxs-select-multiple"></i></td>
+                      </tr>
+                      <tr>
+                        <td><a href="#" class="text-primary fw-bold">ADABADJI Sagesse</a></td>
+                        <td>Commerce</td>
+                        <td class="fw-bold">98</td>
+                      </tr>
+                      <tr>
+                        <td><a href="#" class="text-primary fw-bold">DONKO Raphael</a></td>
+                        <td>Maintenance</td>
+                        <td class="fw-bold">74</td>
+                        <td><i class="bx bxs-select-multiple"></i></td>
+                      </tr>
+                      <tr>
+                        <td><a href="#" class="text-primary fw-bold">BOUAB Touafic</a></td>
+                        <td>Informatique</td>
+                        <td class="fw-bold">63</td>
+                      </tr>
+                      <tr>
+                        <td><a href="#" class="text-primary fw-bold">SAKPLETO Emmanuel</a></td>
+                        <td>Caisse</td>
+                        <td class="fw-bold">41</td>
+                        <td><i class="bx bxs-select-multiple"></i></td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                </div>
+          </section>
+
+
+        </div>
+  </div>
+  {% endblock document %}
+{% endblock content %}
+</body>
+</html>

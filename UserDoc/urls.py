@@ -1,13 +1,15 @@
 from django.urls import path
 from . import views
 from django.conf.urls.static import static
-import SOLUTECH
+from django.conf import settings
 
 urlpatterns = [
 
     path('', views.HomeView.as_view(), name='accueil'),
     path('listeSalarie', views.ListeSalarie.as_view(), name='listeSalarie'),
-    path('creationSalarie', views.CreationSalarie.as_view(), name='creationSalarie'),
+    path('creationSalarie/<int:id>', views.CreationSalarie.as_view(), name='creationSalarie'),
+    path("creationSalarie", views.CreationSalarie.as_view(), name='creationSalarie'),
+    path('modificationSalarie', views.ModificationSalarie.as_view(), name='modificationSalarie'),
     path('salarieStatistique', views.SalarieStatistique.as_view(), name='salarieStatistique'),
     path('conge', views.Conge.as_view(), name='conge'),
     path('suiviTemps', views.SuiviTemp.as_view(), name='suiviTemps'),
@@ -21,6 +23,4 @@ urlpatterns = [
     path('document', views.Document.as_view(), name='document'),
     path('mesdocuments', views.Mesdocuments.as_view(), name='mesdocuments'),
 
-
-
-]+static(SOLUTECH.settings.MEDIA_URL, document_root=SOLUTECH.settings.MEDIA_ROOT)
+]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

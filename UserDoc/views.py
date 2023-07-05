@@ -4,8 +4,13 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 from UserDoc import models
 # Create your views here.
-from UserDoc.forms import LoginForm
+from django.contrib import messages
+
+
 # classe mappant le fichier accueil.html
+from django.db import IntegrityError
+
+
 class HomeView(View):
     def get(self, request):
         return render(request, 'accueil.html', locals())
@@ -57,55 +62,89 @@ class Profil(View):
 
 class CreationSalarie(View):
 
-    def get(self, request):
-        form = LoginForm()
+    def get(self, request, id=None):
+
+        if id is not None:
+
+            salarie = models.Salarie.objects.get(id=id)
+            form = UtilisateurForm(
+                initial={
+                    'nom': salarie.nom, 'prenom': salarie.prenom, 'sexe': salarie.sexe, 'dateNaissance': salarie.dateNaissance,
+                    'contacts': salarie.contacts, 'email': salarie.email, 'statut': salarie.statut, 'nbrEnfant': salarie.nbrEnfant,
+                    'pays': salarie.pays, 'ville': salarie.ville, 'quartier': salarie.quartier, 'codePostal': salarie.codePostal,
+                    'cni': salarie.cni, 'cnss': salarie.cnss, 'hautDegreQualification': salarie.hautDegreQualification, 'certification': salarie.certification,
+                    'departement': salarie.departement, 'poste': salarie.poste, 'contrat': salarie.contrat, 'dateEmbauche': salarie.dateEmbauche,
+                    'salaireBase': salarie.salaireBase,
+                }
+            )
+            submit_button_message = "Enregistrer la modification"
+            form.fields['nom'].disabled = True
+
+        else:
+            submit_button_message = "Enregistrer le salarié"
+            form = UtilisateurForm()
         return render(request, 'creationSalarie.html', locals())
 
-    def post(self, request):
 
-        nom = request.POST.get('nom')
-        prenom = request.POST.get('prenom')
-        dateNaissance = request.POST.get('datenaissance')
-        photo = request.POST.get('photo')
-        sexe = request.POST.get('sexe')
-        contacts = request.POST.get('contacts')
-        email = request.POST.get('email')
-        statut = request.POST.get('statut')
-        nbrEnfant = request.POST.get('nbrEnfant')
-        pays = request.POST.get('pays')
-        ville = request.POST.get('ville')
-        quartier = request.POST.get('quartier')
-        codePostal = request.POST.get('codePostal')
-        cni = request.POST.get('cni')
-        cnss = request.POST.get('cnss')
-        hautDegreQualification = request.POST.get('hautDegreQualification')
-        certification = request.POST.get('certification')
-        dateEmbauche = request.POST.get('dateEmbauche')
-        departement = request.POST.get('departement')
-        poste = request.POST.get('poste')
-        dateEmbauche = request.POST.get('dateEmbauche')
-        contrat = request.POST.get('contrat')
-        salaireBase = request.POST.get('salairebase')
-        print("hello world")
-        salarie = models.Salarie.objects.create(
-            nom=nom, prenom=prenom, sexe=sexe, dateNaissance=dateNaissance,
-            photo=photo, contacts=contacts, email=email, statut=statut, nbrEnfant=nbrEnfant,
-            pays=pays, ville=ville, quartier=quartier, codePostal=codePostal,
-            cni=cni, cnss=cnss, hautDegreQualification=hautDegreQualification,
-            certification=certification, departement=departement,
-            poste=poste, contrat=contrat, dateEmbauche=dateEmbauche, salaireBase=salaireBase)
-        print("welcomme")
-        salarie.save()
+    def post(self, request, id=None):
 
-        print("hello")
+        form = UtilisateurForm(request.POST, request.FILES)
 
+        # Soumission du formulaire de modification
+        if request.POST.get('modifier') == "Confirmer la modification":
+            salarie = models.Salarie.objects.get(id=id)
+            form = UtilisateurForm(request.POST, instance=salarie)
 
-        print(nom)
-        return render(request, 'profil.html', locals())
+            if form.is_valid():
+                form.save()
 
+                # Traitement supplémentaire si la sauvegarde réussit
+                messages.success(request, "Congratulations! User Registered Successfully")
+                success_message = "Formulaire soumis avec succès"
+                url = reverse('listeSalarie')
+                return redirect(url)
+
+            else:
+                messages.warning(request, "Invalid Input Data")
+                return render(request, 'creationSalarie.html', locals())
+
+        # Soumission du formulaire d'enregistrement
+        if request.POST.get('enregistrer') == "Enregistrer le salarié":
+
+            if form.is_valid():
+                try:
+                    form.save()
+                    # Enregistrer un utilisateur
+                    username = form.cleaned_data['nom']
+                    # Traitement supplémentaire si la sauvegarde réussit
+                    messages.success(request, "Congratulations! User Registered Successfully")
+                    success_message = "Formulaire soumis avec succès"
+                    nom = form.cleaned_data['nom']
+                    prenom = form.cleaned_data['prenom']
+                    url = reverse('listeSalarie')
+                    return redirect(url)
+
+                except IntegrityError:
+                    nom = form.cleaned_data['nom']
+                    prenom = form.cleaned_data['prenom']
+                    primary_key_errors = f"L'utilisateur '{nom} {prenom}' existe déjà"
+                    return render(request, 'creationSalarie.html', locals())
+
+            else:
+                messages.warning(request, "Invalid Input Data")
+                return render(request, 'creationSalarie.html', locals())
+
+class ModificationSalarie(View):
+    def get(self, request, id):
+
+        salaries = models.Salarie.objects.all()
+        total_salaries = models.Salarie.objects.count()
+        return render(request, 'listeSalarie.html', locals())
 
 class ListeSalarie(View):
     def get(self, request):
+        salaries = models.Salarie.objects.all()
+        total_salaries = models.Salarie.objects.count()
         return render(request, 'listeSalarie.html', locals())
 
     def post(self, request):

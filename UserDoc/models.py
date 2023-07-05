@@ -1,14 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from django.db.models.signals import pre_save
+from django.dispatch import receiver
 # Create your models here.
-#class Departement(models.Model):
-#    idDepartement = models.CharField(max_length=10)
-#    nomDepartement = models.CharField(max_length=100)
-#    chefDepartement = models.OneToOneField(User, on_delete=models.SET_NULL, null=True)
+class Departement(models.Model):
 
-#    def __str__(self):
-#        return self.nomDepartement
+    nomDepartement = models.CharField(max_length=100)
+
+    def __str__(self):
+       return self.nomDepartement
 
 class Utilisateur(models.Model):
     sexes = [
@@ -22,25 +22,26 @@ class Utilisateur(models.Model):
 
     nom = models.CharField(max_length=50)
     prenom = models.CharField(max_length=100)
-    sexe = models.CharField(max_length=10, choices=sexes)
+    sexe = models.CharField(max_length=10, choices=sexes, null=True)
     dateNaissance = models.DateField(null=True)
-    photo = models.ImageField(blank=True, null=True)
+    photo = models.ImageField(upload_to='photo/', null=True)
     contacts = models.CharField(max_length=100, null=True)
-    email = models.EmailField(max_length=100)
-    statut = models.CharField(max_length=10, choices=statuts)
-    nbrEnfant = models.IntegerField(blank=True)
-    pays = models.CharField(max_length=50)
-    ville = models.CharField(max_length=50)
+    email = models.EmailField(max_length=100, null=True)
+    statut = models.CharField(max_length=10, choices=statuts, null=True)
+    nbrEnfant = models.IntegerField(blank=True, null=True)
+    pays = models.CharField(max_length=50, null=True)
+    ville = models.CharField(max_length=50, null=True)
     quartier = models.CharField(max_length=100, null=True)
-    codePostal = models.CharField(max_length=10)
-    cni = models.CharField(max_length=20)
-    cnss = models.CharField(max_length=10)
-    hautDegreQualification = models.CharField(max_length=50)
-    certification = models.CharField(max_length=100)
+    codePostal = models.CharField(max_length=10, null=True)
+    cni = models.CharField(max_length=20, null=True)
+    cnss = models.CharField(max_length=10, null=True)
+    hautDegreQualification = models.CharField(max_length=50, null=True)
+    certification = models.CharField(max_length=100, null=True)
 
 
     class Meta:
         abstract = True
+
 
 
 
@@ -53,14 +54,24 @@ class Salarie(Utilisateur):
         ('2', "Commerciale"),
         ('3', "Techniciens"),
     ]
-    departement = models.CharField(max_length=100, choices=departements, null=True)
+    matricule = models.CharField(max_length=20, unique=True, null=True)
+    departement = models.ForeignKey(Departement, on_delete=models.SET_NULL, null=True)
     poste = models.CharField(max_length=150, null=True)
     contrat = models.CharField(max_length=10, null=True)
-    dateEmbauche = models.DateField()
-    salaireBase = models.FloatField()
+    dateEmbauche = models.DateField(null=True)
+    salaireBase = models.FloatField(null=True)
 
     def __str__(self):
         return self.nom + " " + self.prenom
+
+@receiver(pre_save, sender=Salarie)
+def generate_matricule(sender, instance, **kwargs):
+    if not instance.matricule:
+        # Génération du matricule à partir du nom et du prénom
+        matricule = f"{instance.nom.upper()}{instance.prenom.upper()}"
+        instance.matricule = matricule
+
+
 
 class Document(models.Model):
     titreDocument = models.CharField(max_length=100)

@@ -4,8 +4,7 @@ from UserDoc import models
 
 @admin.register(models.Salarie)
 class AdminUtilisateur(admin.ModelAdmin):
-    list_display = ['nom', 'prenom', 'email', 'sexe']
-
+    list_display = ['id', 'matricule', 'nom', 'prenom', 'email', 'sexe']
 
 @admin.register(models.Document)
 class AdminDocument(admin.ModelAdmin):
@@ -17,10 +16,14 @@ class AdminPaie(admin.ModelAdmin):
 
 @admin.register(models.Conge)
 class AdminConge(admin.ModelAdmin):
-    list_display = ['id', 'salarieConge', "dateDebutConge", "dateFinConge", "typeConge", "statutConge"]
+    list_display = ['id', "dateDebutConge", "dateFinConge", "typeConge", "statutConge"]
 
 @admin.register(models.Enregistrement)
 class AdminConge(admin.ModelAdmin):
     list_display = ['id', 'salarieEnregistrement', "jour", "heureArrive", "heureDepart"]
+
+@admin.register(models.Departement)
+class AdminDepartement(admin.ModelAdmin):
+    list_display = ['id', 'nomDepartement']
 
 

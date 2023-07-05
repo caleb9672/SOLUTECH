@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+  {% block content %}
+      <div class="pagetitle" style="align-items: center; justify-content: center; display: flex">
+
+
+         <div class="row mb-3" style="align-self: center">
+
+           <label class="card-title">Image de profil</label>
+           <div >
+
+             <img src="" alt="Profile" id="preview" style="max-width: 100%; max-height: 150px" >
+
+             <div class="pt-2">
+
+
+
+               <!--<a href="#"  class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>-->
+             </div>
+               <script>
+                  function previewImage(event) {
+                    var input = event.target;
+                    var preview = document.getElementById('preview');
+
+                    var reader = new FileReader();
+                    reader.onload = function() {
+                      preview.src = reader.result;
+                    }
+
+                    reader.readAsDataURL(input.files[0]);
+                  }
+                </script>
+
+           </div>
+         </div>
+
+      </div>
+      <section class="section">
+
+      <div class="row">
+
+        <div>
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title" >
+                  <p>
+                      {% if form.errors %}
+                        <small class="text-danger">
+                            un ou plusieurs champs ne sont pas remplis ou comportent des
+                            erreurs
+                        </small>
+                    {% endif %}
+
+                      {% if primary_key_errors %}
+                         <small class="text-danger">
+                             {{primary_key_errors}}
+                        </small>
+                      {% endif %}
+
+                  </p>
+                  Informations Personnelles
+              </h5>
+
+                <form method="POST" style="margin-top: 2em" enctype="multipart/form-data" novalidate>
+
+                    {% csrf_token %}
+                    <div class="row g-3">
+                     <div class="col-md-5">
+
+                         {{form.nom.label_tag}}<br>
+
+                        {{form.nom}}
+                        <small class="text-danger">{{form.nom.errors|striptags}}</small>
+                        <br><br>
+
+                        {{form.photo.label_tag}} {{form.photo}}
+                        <small class="text-danger">{{form.photo.errors|striptags}}</small>
+                        <br><br>
+
+                         {{form.sexe.label_tag}} {{form.sexe}}
+
+                        <small class="text-danger">{{form.sexe.errors|striptags}}</small>
+                        <br><br>
+
+
+
+                         {{form.email.label_tag}} {{form.email}}
+                        <small class="text-danger">{{form.email.errors|striptags}}</small>
+                        <br><br>
+
+                         {{form.nbrEnfant.label_tag}} {{form.nbrEnfant}}
+                        <small class="text-danger">{{form.nbrEnfant.errors|striptags}}</small>
+                        <br><br>
+
+                         {{form.ville.label_tag}} {{form.ville}}
+                        <small class="text-danger">{{form.ville.errors|striptags}}</small>
+                        <br><br>
+
+                         {{form.codePostal.label_tag}} {{form.codePostal}}
+                        <small class="text-danger">{{form.codePostal.errors|striptags}}</small>
+                        <br><br>
+
+                         {{form.cnss.label_tag}} {{form.cnss}}
+                        <small class="text-danger">{{form.cnss.errors|striptags}}</small>
+                        <br><br>
+
+                         {{form.certification.label_tag}} {{form.certification}}
+                        <small class="text-danger">{{form.certification.errors|striptags}}</small>
+                        <br><br>
+
+                     </div>
+                        <div class="col-md-2"></div>
+                     <div class="col-md-5">
+                        {{form.prenom.label_tag}} {{form.prenom}}
+                        <small class="text-danger">{{form.prenom.errors|striptags}}</small>
+                        <br><br>
+                        {{form.dateNaissance.label_tag}} {{form.dateNaissance}}
+                        <small class="text-danger">{{form.dateNaissance.errors|striptags}}</small>
+                        <br><br>
+                         {{form.contacts.label_tag}} {{form.contacts}}
+                        <small class="text-danger">{{form.contacts.errors|striptags}}</small>
+                        <br><br>
+                        {{form.statut.label_tag}} {{form.statut}}
+                        <small class="text-danger">{{form.statut.errors|striptags}}</small>
+                        <br><br>
+                        {{form.pays.label_tag}} {{form.pays}}
+                        <small class="text-danger">{{form.pays.errors|striptags}}</small>
+                        <br><br>
+                        {{form.quartier.label_tag}} {{form.quartier}}
+                        <small class="text-danger">{{form.quartier.errors|striptags}}</small>
+                        <br><br>
+                        {{form.cni.label_tag}} {{form.cni}}
+                        <small class="text-danger">{{form.cni.errors|striptags}}</small>
+                        <br><br>
+                        {{form.hautDegreQualification.label_tag}} {{form.hautDegreQualification}}
+                        <small class="text-danger">{{form.hautDegreQualification.errors|striptags}}</small>
+                        <br><br>
+                     </div>
+                    </div>
+
+                    <!-- Rubique des informations concernant le poste -->
+
+                    <h5 class="card-title">Informations sur le poste</h5>
+
+                    <div class="col-md-12">
+                      {{form.departement.label_tag}} {{form.departement}}
+                        <small class="text-danger">{{form.departement.errors|striptags}}</small>
+                        <br><br>
+                    </div>
+                    <div class="row g-3">
+                    <div class="col-md-6">
+                      {{form.poste.label_tag}} {{form.poste}}
+                        <small class="text-danger">{{form.poste.errors|striptags}}</small>
+                        <br><br>
+                    </div>
+                    <div class="col-md-6">
+                      {{form.contrat.label_tag}} {{form.contrat}}
+                        <small class="text-danger">{{form.contrat.errors|striptags}}</small>
+                        <br><br>
+
+                    </div>
+                    <div class="col-md-6">
+                      {{form.dateEmbauche.label_tag}} {{form.dateEmbauche}}
+                        <small class="text-danger">{{form.dateEmbauche.errors|striptags}}</small>
+                        <br><br>
+                    </div>
+
+
+
+                    <div class="col-md-6">
+                      {{form.salaireBase.label_tag}} {{form.salaireBase}}
+                        <small class="text-danger">{{form.salaireBase.errors|striptags}}</small>
+                        <br><br>
+                    </div>
+
+                    <h5 class="card-title">Informations de connexion <small>(Ces données sont générés automatiquement)</small></h5>
+
+                    <div class="col-md-12">
+                      {{form.username.label_tag}} {{form.username}}
+                        <small class="text-danger">{{form.username.errors|striptags}}</small>
+                        <br><br>
+                        {{form.password.label_tag}} {{form.password}}
+                        <small class="text-danger">{{form.passwrod.errors|striptags}}</small>
+                        <br><br>
+
+                    </div>
+                        {% if id is None %}
+                            <input type="submit" value="Enregistrer le salarié" name ='enregistrer' class="w-100 py-2 mb-2 btn btn-outline-success rounded-4">
+                            <a href="{% url 'listeSalarie' %}" class="w-100 py-2 mb-2 btn btn-outline-primary rounded-4">Retour </a>
+                        {% else %}
+                            <input type="submit" value="Confirmer la modification" name="modifier" class="w-100 py-2 mb-2 btn btn-outline-success rounded-4">
+                            <a href="{% url 'listeSalarie' %}" class="w-100 py-2 mb-2 btn btn-outline-primary rounded-4">Retour </a>
+                        {% endif %}
+                    </div>
+                </form>
+              </div>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+  {% endblock content %}
+
+</body>
+</html>

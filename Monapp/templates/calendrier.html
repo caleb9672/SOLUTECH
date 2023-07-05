@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<style>
+    .calendar {
+      display: table;
+      table-layout: fixed;
+
+      border-collapse: collapse;
+    }
+
+    .calendar-header {
+      display: table-row;
+      font-weight: bold;
+    }
+
+    .calendar-header div {
+      display: table-cell;
+      text-align: center;
+      padding: 5px;
+
+    }
+
+    .calendar-body {
+      display: table-row-group;
+    }
+
+    .calendar-row {
+      display: table-row;
+    }
+
+    .calendar-cell {
+      display: table-cell;
+      padding: 5px;
+
+    }
+
+    .vacation {
+      background-color: #f0f0f0;
+    }
+  </style>
+
+  <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Calendrier des congés</h5>
+        <p class="card-title" style="text-align: center"><&nbsp;&nbsp;&nbsp; 2023 &nbsp;&nbsp;&nbsp;></p>
+
+        <div style="margin-left: 1em">
+
+          <div class="row" style="display: flex; align-items: center; align-content: center">
+
+            <div class="calendar col-md-3" style="font-size: 5px; margin: 2em"; >
+                <strong>JAN</strong>
+                <div class="calendar-body">
+
+                  <div class="calendar-row">
+
+                    <div class="calendar-cell"></div>
+                    <div class="calendar-cell"></div>
+                    <div class="calendar-cell vacation"></div>
+                    <div class="calendar-cell vacation"></div>
+                    <div class="calendar-cell"></div>
+                      <div class="calendar-cell">1</div>
+                      <div class="calendar-cell">2</div>
+                  </div>
+                  <div class="calendar-row">
+                    <div class="calendar-cell">3</div>
+                    <div class="calendar-cell">4</div>
+                    <div class="calendar-cell">5</div>
+                    <div class="calendar-cell">6</div>
+                      <div class="calendar-cell">7</div>
+                      <div class="calendar-cell">8</div>
+                    <div class="calendar-cell vacation">9</div>
+                  </div>
+                  <div class="calendar-row">
+                    <div class="calendar-cell">10</div>
+                    <div class="calendar-cell">11</div>
+                    <div class="calendar-cell">12</div>
+                    <div class="calendar-cell">13</div>
+                      <div class="calendar-cell">14</div>
+                      <div class="calendar-cell">15</div>
+                    <div class="calendar-cell vacation">16</div>
+                  </div>
+                  <div class="calendar-row">
+                    <div class="calendar-cell">17</div>
+                    <div class="calendar-cell">18</div>
+                    <div class="calendar-cell">19</div>
+                    <div class="calendar-cell">20</div>
+                      <div class="calendar-cell">21</div>
+                      <div class="calendar-cell">22</div>
+                    <div class="calendar-cell vacation">23</div>
+                  </div>
+                  <div class="calendar-row">
+                    <div class="calendar-cell">24</div>
+                    <div class="calendar-cell">26</div>
+                    <div class="calendar-cell">27</div>
+                    <div class="calendar-cell">28</div>
+                      <div class="calendar-cell">29</div>
+                      <div class="calendar-cell">30</div>
+                    <div class="calendar-cell vacation">31</div>
+                  </div>
+                </div>
+                <!-- Ajoutez d'autres lignes pour les autres semaines et salariés -->
+            </div>
+            <div class="calendar col-md-3" style="font-size: 5px; margin: 2em">
+              <strong>FEV</strong>
+                <div class="calendar-body">
+                  <div class="calendar-row">
+                    <div class="calendar-cell"></div>
+                    <div class="calendar-cell"></div>
+                    <div class="calendar-cell vacation"></div>
+                    <div class="calendar-cell vacation"></div>
+                    <div class="calendar-cell"></div>
+                      <div class="calendar-cell">1</div>
+                      <div class="calendar-cell">2</div>
+                  </div>
+                  <div class="calendar-row">
+                    <div class="calendar-cell">3</div>
+                    <div class="calendar-cell">4</div>
+                    <div class="calendar-cell">5</div>
+                    <div class="calendar-cell">6</div>
+                      <div class="calendar-cell">7</div>
+                      <div class="calendar-cell">8</div>
+                    <div class="calendar-cell vacation">9</div>
+                  </div>
+                  <div class="calendar-row">
+                    <div class="calendar-cell">10</div>
+                    <div class="calendar-cell">11</div>
+                    <div class="calendar-cell">12</div>
+                    <div class="calendar-cell">13</div>
+                      <div class="calendar-cell">14</div>
+                      <div class="calendar-cell">15</div>
+                    <div class="calendar-cell vacation">16</div>
+                  </div>
+                  <div class="calendar-row">
+                    <div class="calendar-cell">17</div>
+                    <div class="calendar-cell">18</div>
+                    <div class="calendar-cell">19</div>
+                    <div class="calendar-cell">20</div>
+                      <div class="calendar-cell">21</div>
+                      <div class="calendar-cell">22</div>
+                    <div class="calendar-cell vacation">23</div>
+                  </div>
+                  <div class="calendar-row">
+                    <div class="calendar-cell">24</div>
+                    <div class="calendar-cell">26</div>
+                    <div class="calendar-cell">27</div>
+                    <div class="calendar-cell">28</div>
+                      <div class="calendar-cell">29</div>
+                      <div class="calendar-cell">30</div>
+                    <div class="calendar-cell vacation">31</div>
+                  </div>
+                </div>
+            </div>
+            <div class="calendar col-md-3" style="font-size: 5px; margin: 2em">
+              <strong>MARS</strong>
+                <div class="calendar-body">
+                  <div class="calendar-row">
+                    <div class="calendar-cell"></div>
+                    <div class="calendar-cell"></div>
+                    <div class="calendar-cell vacation"></div>
+                    <div class="calendar-cell vacation"></div>
+                    <div class="calendar-cell"></div>
+                      <div class="calendar-cell">1</div>
+                      <div class="calendar-cell">2</div>
+                  </div>
+                  <div class="calendar-row">
+                    <div class="calendar-cell">3</div>
+                    <div class="calendar-cell">4</div>
+                    <div class="calendar-cell">5</div>
+                    <div class="calendar-cell">6</div>
+                      <div class="calendar-cell">7</div>
+                      <div class="calendar-cell">8</div>
+                    <div class="calendar-cell vacation">9</div>
+                  </div>
+                  <div class="calendar-row">
+                    <div class="calendar-cell">10</div>
+                    <div class="calendar-cell">11</div>
+                    <div class="calendar-cell">12</div>
+                    <div class="calendar-cell">13</div>
+                      <div class="calendar-cell">14</div>
+                      <div class="calendar-cell">15</div>
+                    <div class="calendar-cell vacation">16</div>
+                  </div>
+                  <div class="calendar-row">
+                    <div class="calendar-cell">17</div>
+                    <div class="calendar-cell">18</div>
+                    <div class="calendar-cell">19</div>
+                    <div class="calendar-cell">20</div>
+                      <div class="calendar-cell">21</div>
+                      <div class="calendar-cell">22</div>
+                    <div class="calendar-cell vacation">23</div>
+                  </div>
+                  <div class="calendar-row">
+                    <div class="calendar-cell">24</div>
+                    <div class="calendar-cell">26</div>
+                    <div class="calendar-cell">27</div>
+                    <div class="calendar-cell">28</div>
+                      <div class="calendar-cell">29</div>
+                      <div class="calendar-cell">30</div>
+                    <div class="calendar-cell vacation">31</div>
+                  </div>
+                </div>
+            </div>
+
+          </div>
+          <div class="row" style="display: flex; align-items: center; align-content: center">
+
+            <div class="calendar col-md-3" style="font-size: 5px; margin: 2em"; >
+              <strong>AVR</strong>
+                <div class="calendar-body">
+                  <div class="calendar-row">
+                    <div class="calendar-cell"></div>
+                    <div class="calendar-cell"></div>
+                    <div class="calendar-cell vacation"></div>
+                    <div class="calendar-cell vacation"></div>
+                    <div class="calendar-cell"></div>
+                      <div class="calendar-cell">1</div>
+                      <div class="calendar-cell">2</div>
+                  </div>
+                  <div class="calendar-row">
+                    <div class="calendar-cell">3</div>
+                    <div class="calendar-cell">4</div>
+                    <div class="calendar-cell">5</div>
+                    <div class="calendar-cell">6</div>
+                      <div class="calendar-cell">7</div>
+                      <div class="calendar-cell">8</div>
+                    <div class="calendar-cell vacation">9</div>
+                  </div>
+                  <div class="calendar-row">
+                    <div class="calendar-cell">10</div>
+                    <div class="calendar-cell">11</div>
+                    <div class="calendar-cell">12</div>
+                    <div class="calendar-cell">13</div>
+                      <div class="calendar-cell">14</div>
+                      <div class="calendar-cell">15</div>
+                    <div class="calendar-cell vacation">16</div>
+                  </div>
+                  <div class="calendar-row">
+                    <div class="calendar-cell">17</div>
+                    <div class="calendar-cell">18</div>
+                    <div class="calendar-cell">19</div>
+                    <div class="calendar-cell">20</div>
+                      <div class="calendar-cell">21</div>
+                      <div class="calendar-cell">22</div>
+                    <div class="calendar-cell vacation">23</div>
+                  </div>
+                  <div class="calendar-row">
+                    <div class="calendar-cell">24</div>
+                    <div class="calendar-cell">26</div>
+                    <div class="calendar-cell">27</div>
+                    <div class="calendar-cell">28</div>
+                      <div class="calendar-cell">29</div>
+                      <div class="calendar-cell">30</div>
+                    <div class="calendar-cell vacation">31</div>
+                  </div>
+                </div>
+                <!-- Ajoutez d'autres lignes pour les autres semaines et salariés -->
+            </div>
+            <div class="calendar col-md-3" style="font-size: 5px; margin: 2em">
+              <strong>MAI</strong>
+                <div class="calendar-body">
+                  <div class="calendar-row">
+                    <div class="calendar-cell"></div>
+                    <div class="calendar-cell"></div>
+                    <div class="calendar-cell vacation"></div>
+                    <div class="calendar-cell vacation"></div>
+                    <div class="calendar-cell"></div>
+                      <div class="calendar-cell">1</div>
+                      <div class="calendar-cell">2</div>
+                  </div>
+                  <div class="calendar-row">
+                    <div class="calendar-cell">3</div>
+                    <div class="calendar-cell">4</div>
+                    <div class="calendar-cell">5</div>
+                    <div class="calendar-cell">6</div>
+                      <div class="calendar-cell">7</div>
+                      <div class="calendar-cell">8</div>
+                    <div class="calendar-cell vacation">9</div>
+                  </div>
+                  <div class="calendar-row">
+                    <div class="calendar-cell">10</div>
+                    <div class="calendar-cell">11</div>
+                    <div class="calendar-cell">12</div>
+                    <div class="calendar-cell">13</div>
+                      <div class="calendar-cell">14</div>
+                      <div class="calendar-cell">15</div>
+                    <div class="calendar-cell vacation">16</div>
+                  </div>
+                  <div class="calendar-row">
+                    <div class="calendar-cell">17</div>
+                    <div class="calendar-cell">18</div>
+                    <div class="calendar-cell">19</div>
+                    <div class="calendar-cell">20</div>
+                      <div class="calendar-cell">21</div>
+                      <div class="calendar-cell">22</div>
+                    <div class="calendar-cell vacation">23</div>
+                  </div>
+                  <div class="calendar-row">
+                    <div class="calendar-cell">24</div>
+                    <div class="calendar-cell">26</div>
+                    <div class="calendar-cell">27</div>
+                    <div class="calendar-cell">28</div>
+                      <div class="calendar-cell">29</div>
+                      <div class="calendar-cell">30</div>
+                    <div class="calendar-cell vacation">31</div>
+                  </div>
+                </div>
+            </div>
+            <div class="calendar col-md-3" style="font-size: 5px; margin: 2em">
+              <strong>JUIN</strong>
+                <div class="calendar-body">
+                  <div class="calendar-row">
+                    <div class="calendar-cell"></div>
+                    <div class="calendar-cell"></div>
+                    <div class="calendar-cell vacation"></div>
+                    <div class="calendar-cell vacation"></div>
+                    <div class="calendar-cell"></div>
+                      <div class="calendar-cell">1</div>
+                      <div class="calendar-cell">2</div>
+                  </div>
+                  <div class="calendar-row">
+                    <div class="calendar-cell">3</div>
+                    <div class="calendar-cell">4</div>
+                    <div class="calendar-cell">5</div>
+                    <div class="calendar-cell">6</div>
+                      <div class="calendar-cell">7</div>
+                      <div class="calendar-cell">8</div>
+                    <div class="calendar-cell vacation">9</div>
+                  </div>
+                  <div class="calendar-row">
+                    <div class="calendar-cell">10</div>
+                    <div class="calendar-cell">11</div>
+                    <div class="calendar-cell">12</div>
+                    <div class="calendar-cell">13</div>
+                      <div class="calendar-cell">14</div>
+                      <div class="calendar-cell">15</div>
+                    <div class="calendar-cell vacation">16</div>
+                  </div>
+                  <div class="calendar-row">
+                    <div class="calendar-cell">17</div>
+                    <div class="calendar-cell">18</div>
+                    <div class="calendar-cell">19</div>
+                    <div class="calendar-cell">20</div>
+                      <div class="calendar-cell">21</div>
+                      <div class="calendar-cell">22</div>
+                    <div class="calendar-cell vacation">23</div>
+                  </div>
+                  <div class="calendar-row">
+                    <div class="calendar-cell">24</div>
+                    <div class="calendar-cell">26</div>
+                    <div class="calendar-cell">27</div>
+                    <div class="calendar-cell">28</div>
+                      <div class="calendar-cell">29</div>
+                      <div class="calendar-cell">30</div>
+                    <div class="calendar-cell vacation">31</div>
+                  </div>
+                </div>
+            </div>
+
+          </div>
+          <div class="row" style="display: flex; align-items: center; align-content: center">
+
+            <div class="calendar col-md-3" style="font-size: 5px; margin: 2em"; >
+              <strong>JUIL</strong>
+                <div class="calendar-body">
+                  <div class="calendar-row">
+                    <div class="calendar-cell"></div>
+                    <div class="calendar-cell"></div>
+                    <div class="calendar-cell vacation"></div>
+                    <div class="calendar-cell vacation"></div>
+                    <div class="calendar-cell"></div>
+                      <div class="calendar-cell">1</div>
+                      <div class="calendar-cell">2</div>
+                  </div>
+                  <div class="calendar-row">
+                    <div class="calendar-cell">3</div>
+                    <div class="calendar-cell">4</div>
+                    <div class="calendar-cell">5</div>
+                    <div class="calendar-cell">6</div>
+                      <div class="calendar-cell">7</div>
+                      <div class="calendar-cell">8</div>
+                    <div class="calendar-cell vacation">9</div>
+                  </div>
+                  <div class="calendar-row">
+                    <div class="calendar-cell">10</div>
+                    <div class="calendar-cell">11</div>
+                    <div class="calendar-cell">12</div>
+                    <div class="calendar-cell">13</div>
+                      <div class="calendar-cell">14</div>
+                      <div class="calendar-cell">15</div>
+                    <div class="calendar-cell vacation">16</div>
+                  </div>
+                  <div class="calendar-row">
+                    <div class="calendar-cell">17</div>
+                    <div class="calendar-cell">18</div>
+                    <div class="calendar-cell">19</div>
+                    <div class="calendar-cell">20</div>
+                      <div class="calendar-cell">21</div>
+                      <div class="calendar-cell">22</div>
+                    <div class="calendar-cell vacation">23</div>
+                  </div>
+                  <div class="calendar-row">
+                    <div class="calendar-cell">24</div>
+                    <div class="calendar-cell">26</div>
+                    <div class="calendar-cell">27</div>
+                    <div class="calendar-cell">28</div>
+                      <div class="calendar-cell">29</div>
+                      <div class="calendar-cell">30</div>
+                    <div class="calendar-cell vacation">31</div>
+                  </div>
+                </div>
+                <!-- Ajoutez d'autres lignes pour les autres semaines et salariés -->
+            </div>
+            <div class="calendar col-md-3" style="font-size: 5px; margin: 2em">
+              <strong>AOUT</strong>
+                <div class="calendar-body">
+                  <div class="calendar-row">
+                    <div class="calendar-cell"></div>
+                    <div class="calendar-cell"></div>
+                    <div class="calendar-cell vacation"></div>
+                    <div class="calendar-cell vacation"></div>
+                    <div class="calendar-cell"></div>
+                      <div class="calendar-cell">1</div>
+                      <div class="calendar-cell">2</div>
+                  </div>
+                  <div class="calendar-row">
+                    <div class="calendar-cell">3</div>
+                    <div class="calendar-cell">4</div>
+                    <div class="calendar-cell">5</div>
+                    <div class="calendar-cell">6</div>
+                      <div class="calendar-cell">7</div>
+                      <div class="calendar-cell">8</div>
+                    <div class="calendar-cell vacation">9</div>
+                  </div>
+                  <div class="calendar-row">
+                    <div class="calendar-cell">10</div>
+                    <div class="calendar-cell">11</div>
+                    <div class="calendar-cell">12</div>
+                    <div class="calendar-cell">13</div>
+                      <div class="calendar-cell">14</div>
+                      <div class="calendar-cell">15</div>
+                    <div class="calendar-cell vacation">16</div>
+                  </div>
+                  <div class="calendar-row">
+                    <div class="calendar-cell">17</div>
+                    <div class="calendar-cell">18</div>
+                    <div class="calendar-cell">19</div>
+                    <div class="calendar-cell">20</div>
+                      <div class="calendar-cell">21</div>
+                      <div class="calendar-cell">22</div>
+                    <div class="calendar-cell vacation">23</div>
+                  </div>
+                  <div class="calendar-row">
+                    <div class="calendar-cell">24</div>
+                    <div class="calendar-cell">26</div>
+                    <div class="calendar-cell">27</div>
+                    <div class="calendar-cell">28</div>
+                      <div class="calendar-cell">29</div>
+                      <div class="calendar-cell">30</div>
+                    <div class="calendar-cell vacation">31</div>
+                  </div>
+                </div>
+            </div>
+            <div class="calendar col-md-3" style="font-size: 5px; margin: 2em">
+              <strong>SEPT</strong>
+                <div class="calendar-body">
+                  <div class="calendar-row">
+                    <div class="calendar-cell"></div>
+                    <div class="calendar-cell"></div>
+                    <div class="calendar-cell vacation"></div>
+                    <div class="calendar-cell vacation"></div>
+                    <div class="calendar-cell"></div>
+                      <div class="calendar-cell">1</div>
+                      <div class="calendar-cell">2</div>
+                  </div>
+                  <div class="calendar-row">
+                    <div class="calendar-cell">3</div>
+                    <div class="calendar-cell">4</div>
+                    <div class="calendar-cell">5</div>
+                    <div class="calendar-cell">6</div>
+                      <div class="calendar-cell">7</div>
+                      <div class="calendar-cell">8</div>
+                    <div class="calendar-cell vacation">9</div>
+                  </div>
+                  <div class="calendar-row">
+                    <div class="calendar-cell">10</div>
+                    <div class="calendar-cell">11</div>
+                    <div class="calendar-cell">12</div>
+                    <div class="calendar-cell">13</div>
+                      <div class="calendar-cell">14</div>
+                      <div class="calendar-cell">15</div>
+                    <div class="calendar-cell vacation">16</div>
+                  </div>
+                  <div class="calendar-row">
+                    <div class="calendar-cell">17</div>
+                    <div class="calendar-cell">18</div>
+                    <div class="calendar-cell">19</div>
+                    <div class="calendar-cell">20</div>
+                      <div class="calendar-cell">21</div>
+                      <div class="calendar-cell">22</div>
+                    <div class="calendar-cell vacation">23</div>
+                  </div>
+                  <div class="calendar-row">
+                    <div class="calendar-cell">24</div>
+                    <div class="calendar-cell">26</div>
+                    <div class="calendar-cell">27</div>
+                    <div class="calendar-cell">28</div>
+                      <div class="calendar-cell">29</div>
+                      <div class="calendar-cell">30</div>
+                    <div class="calendar-cell vacation">31</div>
+                  </div>
+                </div>
+            </div>
+
+          </div>
+          <div class="row" style="display: flex; align-items: center; align-content: center">
+
+            <div class="calendar col-md-3" style="font-size: 5px; margin: 2em"; >
+              <strong>OCT</strong>
+                <div class="calendar-body">
+                  <div class="calendar-row">
+                    <div class="calendar-cell"></div>
+                    <div class="calendar-cell"></div>
+                    <div class="calendar-cell vacation"></div>
+                    <div class="calendar-cell vacation"></div>
+                    <div class="calendar-cell"></div>
+                      <div class="calendar-cell">1</div>
+                      <div class="calendar-cell">2</div>
+                  </div>
+                  <div class="calendar-row">
+                    <div class="calendar-cell">3</div>
+                    <div class="calendar-cell">4</div>
+                    <div class="calendar-cell">5</div>
+                    <div class="calendar-cell">6</div>
+                      <div class="calendar-cell">7</div>
+                      <div class="calendar-cell">8</div>
+                    <div class="calendar-cell vacation">9</div>
+                  </div>
+                  <div class="calendar-row">
+                    <div class="calendar-cell">10</div>
+                    <div class="calendar-cell">11</div>
+                    <div class="calendar-cell">12</div>
+                    <div class="calendar-cell">13</div>
+                      <div class="calendar-cell">14</div>
+                      <div class="calendar-cell">15</div>
+                    <div class="calendar-cell vacation">16</div>
+                  </div>
+                  <div class="calendar-row">
+                    <div class="calendar-cell">17</div>
+                    <div class="calendar-cell">18</div>
+                    <div class="calendar-cell">19</div>
+                    <div class="calendar-cell">20</div>
+                      <div class="calendar-cell">21</div>
+                      <div class="calendar-cell">22</div>
+                    <div class="calendar-cell vacation">23</div>
+                  </div>
+                  <div class="calendar-row">
+                    <div class="calendar-cell">24</div>
+                    <div class="calendar-cell">26</div>
+                    <div class="calendar-cell">27</div>
+                    <div class="calendar-cell">28</div>
+                      <div class="calendar-cell">29</div>
+                      <div class="calendar-cell">30</div>
+                    <div class="calendar-cell vacation">31</div>
+                  </div>
+                </div>
+                <!-- Ajoutez d'autres lignes pour les autres semaines et salariés -->
+            </div>
+            <div class="calendar col-md-3" style="font-size: 5px; margin: 2em">
+              <strong>NOV</strong>
+                <div class="calendar-body">
+                  <div class="calendar-row">
+                    <div class="calendar-cell"></div>
+                    <div class="calendar-cell"></div>
+                    <div class="calendar-cell vacation"></div>
+                    <div class="calendar-cell vacation"></div>
+                    <div class="calendar-cell"></div>
+                      <div class="calendar-cell">1</div>
+                      <div class="calendar-cell">2</div>
+                  </div>
+                  <div class="calendar-row">
+                    <div class="calendar-cell">3</div>
+                    <div class="calendar-cell">4</div>
+                    <div class="calendar-cell">5</div>
+                    <div class="calendar-cell">6</div>
+                      <div class="calendar-cell">7</div>
+                      <div class="calendar-cell">8</div>
+                    <div class="calendar-cell vacation">9</div>
+                  </div>
+                  <div class="calendar-row">
+                    <div class="calendar-cell">10</div>
+                    <div class="calendar-cell">11</div>
+                    <div class="calendar-cell">12</div>
+                    <div class="calendar-cell">13</div>
+                      <div class="calendar-cell">14</div>
+                      <div class="calendar-cell">15</div>
+                    <div class="calendar-cell vacation">16</div>
+                  </div>
+                  <div class="calendar-row">
+                    <div class="calendar-cell">17</div>
+                    <div class="calendar-cell">18</div>
+                    <div class="calendar-cell">19</div>
+                    <div class="calendar-cell">20</div>
+                      <div class="calendar-cell">21</div>
+                      <div class="calendar-cell">22</div>
+                    <div class="calendar-cell vacation">23</div>
+                  </div>
+                  <div class="calendar-row">
+                    <div class="calendar-cell">24</div>
+                    <div class="calendar-cell">26</div>
+                    <div class="calendar-cell">27</div>
+                    <div class="calendar-cell">28</div>
+                      <div class="calendar-cell">29</div>
+                      <div class="calendar-cell">30</div>
+                    <div class="calendar-cell vacation">31</div>
+                  </div>
+                </div>
+            </div>
+            <div class="calendar col-md-3" style="font-size: 5px; margin: 2em">
+              <strong>DEC</strong>
+                <div class="calendar-body">
+                  <div class="calendar-row">
+                    <div class="calendar-cell"></div>
+                    <div class="calendar-cell"></div>
+                    <div class="calendar-cell vacation"></div>
+                    <div class="calendar-cell vacation"></div>
+                    <div class="calendar-cell"></div>
+                      <div class="calendar-cell">1</div>
+                      <div class="calendar-cell">2</div>
+                  </div>
+                  <div class="calendar-row">
+                    <div class="calendar-cell">3</div>
+                    <div class="calendar-cell">4</div>
+                    <div class="calendar-cell">5</div>
+                    <div class="calendar-cell">6</div>
+                      <div class="calendar-cell">7</div>
+                      <div class="calendar-cell">8</div>
+                    <div class="calendar-cell vacation">9</div>
+                  </div>
+                  <div class="calendar-row">
+                    <div class="calendar-cell">10</div>
+                    <div class="calendar-cell">11</div>
+                    <div class="calendar-cell">12</div>
+                    <div class="calendar-cell">13</div>
+                      <div class="calendar-cell">14</div>
+                      <div class="calendar-cell">15</div>
+                    <div class="calendar-cell vacation">16</div>
+                  </div>
+                  <div class="calendar-row">
+                    <div class="calendar-cell">17</div>
+                    <div class="calendar-cell">18</div>
+                    <div class="calendar-cell">19</div>
+                    <div class="calendar-cell">20</div>
+                      <div class="calendar-cell">21</div>
+                      <div class="calendar-cell">22</div>
+                    <div class="calendar-cell vacation">23</div>
+                  </div>
+                  <div class="calendar-row">
+                    <div class="calendar-cell">24</div>
+                    <div class="calendar-cell">26</div>
+                    <div class="calendar-cell">27</div>
+                    <div class="calendar-cell">28</div>
+                      <div class="calendar-cell">29</div>
+                      <div class="calendar-cell">30</div>
+                    <div class="calendar-cell vacation">31</div>
+                  </div>
+                </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      </div>
+  </div>
+
+</body>
+</html>

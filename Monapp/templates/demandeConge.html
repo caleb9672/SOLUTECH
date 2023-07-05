@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+{% extends 'conge.html' %}
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block contentConge %}
+<section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+
+              <div class="d-flex justify-content-center py-4">
+                <h5 class="card-title text-center pb-0 fs-4">Formulaire de demande de congé</h5>
+              </div><!-- End Logo -->
+
+              <div class="card mb-3">
+
+                <div class="card-body">
+
+                  <div class="pt-4 pb-2">
+
+                  </div>
+
+                  <form class="row g-3 needs-validation" method="POST" novalidate="">
+
+                      {% csrf_token %}
+
+                        <input type="hidden" name="csrfmiddlewaretoken" value="O7ZmR8elgQWICFeTlKZZ0V6D2IVHErMVQ5jCFw5DLGey0hp4OIkzV27r0tSKsRCh">
+                        <div class="col-12">
+                          <label  class="form-label">Date de début</label>
+                          <div class="input-group has-validation">
+                            <!--<span class="input-group-text" id="inputGroupPrepend">@</span>-->
+                            <input type="date" name="date_debut" class="form-control"  required="">
+                            <div class="invalid-feedback">Please entrer la date de début</div>
+                          </div>
+                        </div>
+
+                        <div class="col-12">
+                          <label  class="form-label">Date de fin</label>
+                          <input type="date" name="date_fin" class="form-control"  required="">
+                          <div class="invalid-feedback">Please entrer la date de fin</div>
+                        </div>
+
+                        <div class="col-12">
+                          <label  class="form-label">Type de congé</label>
+                          <input type="text" name="type_conge" class="form-control"  required="">
+                          <div class="invalid-feedback">Please entrer le type de congé</div>
+                        </div>
+
+                        <div class="col-12">
+                          <label  class="form-label">Descriptif du congé</label>
+                          <textarea name="descriptif_conge" rows="5" cols="40" ></textarea>
+                          <div class="invalid-feedback">Please enter your password!</div>
+                        </div>
+
+                        <div class="col-12">
+
+                        </div>
+                        <div class="col-12">
+                          <input type="submit" value="Confirmer la demande" name="Confirmer la demande" class="w-100 py-2 mb-2 btn btn-outline-success rounded-4">
+                          <a href="{% url 'conge' %}" class="w-100 py-2 mb-2 btn btn-outline-primary rounded-4">Retour </a>
+                        </div>
+                        <div class="col-12">
+                          <p class="small mb-0">Don't have account? <a href="/registration">Create an account</a></p>
+                        </div>
+
+                  </form>
+
+                </div>
+              </div>
+
+
+
+            </div>
+          </div>
+        </div>
+
+      </section>
+{% endblock contentConge %}
+</body>
