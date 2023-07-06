@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+{% extends 'document.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  {% block document %}
+  <div class="row" style="margin-top: 0.075em">
+    <div class="ro< g-3 card-body" style="display: flex; align-content: center; align-items: center">
+      <div class="col-md-4 card-body">
+      <a href="#">
+        <div class="col-md-12 my-element" style="text-align: center; justify-content: center">
+            <style>
+                  .my-element {
+                    background-color: floralwhite;
+                    transition: background-color 0.3s ease;
+                    display: flex;
+                    align-items: center;
+                    align-content: center;/* Animation de transition en douceur */
+                  }
+                  .my-element:hover {
+                    background-color: antiquewhite;
+                  }
+            </style>
+
+            <div class="col-md-6" style="display: flex; align-items: center; align-content: center">
+               <div class="card-body">
+                  <h5 class="card-title">Congés attentes</h5>
+               </div>
+           </div>
+        </div>
+      </a>
+      </div>
+      <div class="col-md-4 card-body">
+      <a href="#">
+        <div class="col-md-12 my-element-2" style="text-align: center; justify-content: center">
+            <style>
+                  .my-element-2 {
+                    background-color: /*#00ff80*/  lightgreen;
+                    transition: background-color 0.3s ease;
+                    display: flex;
+                    align-items: center;
+                    align-content: center;/* Animation de transition en douceur */
+                  }
+                  .my-element-2:hover {
+                    background-color:darkseagreen ;
+                  }
+            </style>
+
+            <div class="col-md-6" style="display: flex; align-items: center; align-content: center">
+               <div class="card-body">
+                  <h5 class="card-title">Congés validés </h5>
+               </div>
+           </div>
+        </div>
+      </a>
+      </div>
+      <div class="col-md-4 card-body">
+      <a href="#">
+        <div class="col-md-12 my-element-3" style="text-align: center; justify-content: center">
+            <style>
+                  .my-element-3 {
+                    background-color: /*tomato*/ #9ec5fe;
+                    transition: background-color 0.3s ease;
+                    display: flex;
+                    align-items: center;
+                    align-content: center;/* Animation de transition en douceur */
+                  }
+                  .my-element-3:hover {
+                    background-color: /*#cc3300*/ #609ab6;
+                  }
+            </style>
+
+            <div class="col-md-6" style="display: flex; align-items: center; align-content: center">
+               <div class="card-body">
+                  <h5 class="card-title">Congés refusés </h5>
+               </div>
+           </div>
+        </div>
+      </a>
+      </div>
+    </div>
+  </div>
+  <section class="section" style="margin-top: 1em">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <div class="card">
+            <div class="card-body">
+              <!-- Table with stripped rows -->
+                <div class="datatable-wrapper datatable-loading no-footer sortable searchable fixed-columns">
+
+                <div class="card-body">
+              <h5 class="card-title" style="margin-top:2em; margin-bottom: 2em">Default Table</h5>
+
+              <!-- Default Table -->
+              <table class="table table-striped">
+
+                <thead>
+
+                  <tr >
+                    <th scope="col"><a></a>Name</th>
+                    <th scope="col">Département</th>
+                    <th scope="col">Poste</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Action</th>
+                  </tr>
+
+                </thead>
+
+                  <tbody >
+                    <tr class="survol-couleur-table">
+                      <td>Bridie Kessler</td>
+                      <td>Informatique</td>
+                      <td>Dévelopeuse</td>
+                      <td>maternité</td>
+                      <td><a href="#">+ Voir plus</a> </td>
+                    </tr>
+                    <tr class="survol-couleur-table">
+                      <td>Jeff Johnson</td>
+                      <td>Informatique</td>
+                      <td>Analyste de données</td>
+                      <td>absence maladie</td>
+                      <td><a href="#">+ Voir plus</a> </td>
+                    </tr>
+                  </tbody>
+
+              </table>
+                <style>
+                  .survol-couleur-table:hover {
+                    background-color: red;
+                  }
+                  .my-element-4 {
+                    background-color: /*#00ff80*/  lightgreen;
+                    transition: background-color 0.3s ease;
+                    display: block;
+                    align-items: center;
+                    align-content: center;/* Animation de transition en douceur */
+                  }
+                </style>
+              <!-- End Default Table Example -->
+            </div>
+                <div class="datatable-bottom">
+                    <div class="datatable-info">
+                        Total de personnes : {{total_salaries}}
+                    </div>
+
+                    <nav class="datatable-pagination">
+                        <ul class="datatable-pagination-list"></ul>
+                    </nav>
+                </div>
+            </div>
+          </div>
+              <!-- End Table with stripped rows -->
+        </div>
+      </div>
+      </div>
+    </section>
+  {% endblock document %}
+
+</body>
+</html>

@@ -7,7 +7,10 @@ from Monapp import models
 # Create your views here.
 from django.contrib import messages
 from Monapp.forms import UtilisateurForm
-
+import matplotlib.pyplot as plt
+from django.http import HttpResponse
+from django.template import loader
+import numpy as np
 # classe mappant le fichier accueil.html
 from django.db import IntegrityError
 
@@ -23,42 +26,74 @@ class Salarie(View):
         return render(request, 'salarie.html', locals())
 
 
-# classe mappant le fichier conge.html
-class Conge(View):
+# classe d'évaluation des congés mappant le fichier evaluationconge.html
+class EvaluationConge(View):
     def get(self, request):
 
-        user = request.user
-        salarie = models.Salarie.objects.get(username = user.username)
-        conges = models.Conge.objects.get(salarieConge=salarie)
-        congeAttente = models.Conge.objects.get(salarieConge=salarie, statutConge="En attente")
-        print("sskd")
-        return render(request, 'conge.html', locals())
+        return render(request, 'evaluationconge.html', locals())
 
     def post(self, request):
 
-        # renvoie vers le formulaire de demande de congé
-        if request.POST.get('demander_conge_btn') == "demander_conge_btn":
-            return render(request, 'demandeConge.html', locals())
+        return redirect('conge')
 
-        # renvoie vers la page de congé pour visualiser la demande
-        if request.POST.get('Confirmer la demande') == "Confirmer la demande":
 
-            # récupérer le salarié correspondant
+class Conge(View):
+
+    def get(self, request, id=None):
+
+        if id is not None:
+            type = "text"
+            congeSelected = models.Conge.objects.get(id=id)
+            if congeSelected:
+                visibilite = "disabled"
+                print(congeSelected.dateDebutConge)
+                return render(request, 'demandeConge.html', locals())
+
+        else:
             user = request.user
             salarie = models.Salarie.objects.get(username=user.username)
+            conges = models.Conge.objects.filter(salarieConge=salarie)
+            congeAttente = models.Conge.objects.filter(salarieConge=salarie, statutConge="En attente")
+            print(congeAttente)
 
+            return render(request, 'conge.html', locals())
+
+    def post(self, request, id=None):
+
+        # Condition de demande de congé
+        if request.POST.get("demander_conge_btn") == "demander_conge_btn":
+            type = "date"
+            return render(request, 'demandeConge.html', locals())
+
+        # Condition de confirmation de congé
+        if request.POST.get("Confirmer la demande") == "Confirmer la demande":
+            user = request.user
+            salarie = models.Salarie.objects.get(username=user.username)
             # récupérer les données du formulaire
             datedebut = request.POST.get('date_debut')
             datefin = request.POST.get('date_fin')
             typeconge = request.POST.get('type_conge')
             descriptifConge = request.POST.get('descriptif_conge')
-
             # enregistrer le formulaire
-            conge = models.Conge.objects.create(salarieConge = salarie, dateDebutConge = datedebut,
-                                        dateFinConge=datefin, typeConge=typeconge, descriptifConge=descriptifConge)
+            conge = models.Conge.objects.create(salarieConge=salarie, dateDebutConge=datedebut,
+                                                dateFinConge=datefin, typeConge=typeconge,
+                                                descriptifConge=descriptifConge)
             conge.save()
+            return redirect('conge')
 
-            return render(request,"conge.html", locals())
+        # Condition de suppression de congé
+        if request.POST.get("Supprimer la demande") == "Supprimer la demande":
+            user = request.user
+            salarie = models.Salarie.objects.get(username=user.username)
+            # récupérer les données du formulaire
+            datedebut = request.POST.get('date_debut')
+            datefin = request.POST.get('date_fin')
+            typeconge = request.POST.get('type_conge')
+            descriptifConge = request.POST.get('descriptif_conge')
+            # enregistrer le formulaire
+            conge = models.Conge.objects.get(id=id)
+            conge.delete()
+            return redirect('conge')
 
 
 class DemandeConge(View):
@@ -240,6 +275,20 @@ class ListeSalarie(View):
 
 class SalarieStatistique(View):
     def get(self, request):
+        #x = np.linspace(0, 2 * np.pi, 100)
+        #y = np.sin(x)
+
+        # Créer le diagramme
+        #plt.plot(x, y)
+        #plt.xlabel('x')
+        #plt.ylabel('sin(x)')
+        #plt.title('Diagramme sin(x)')
+
+        # Convertir le diagramme en image
+        #image_path = 'Monapp/static/img'
+        #plt.savefig(image_path)
+
+
         return render(request, 'salarieStatistique.html', locals())
 
 

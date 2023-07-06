@@ -22,10 +22,9 @@
             <div class="card-body">
               <h5 class="card-title" style="align-content: center">Indeminités de congés</h5>
               <hr>
-
                 <nav class="d-flex justify-content-center">
                     <ol class="breadcrumb">
-                      <li class="breadcrumb-item"><h2 style="text-align: center">ACQUIS <p>19h</p></h2></li>
+                      <li class="breadcrumb-item"><h2 style="text-align: center">ACQU<p>19h</p></h2></li>
                       <li class="breadcrumb-item"><h2 style="text-align: center"> SOLDE 20h</h2></li>
                       <li class="breadcrumb-item"><h2 style="text-align: center"> PRIS 15h</h2></li>
                     </ol>
@@ -85,34 +84,45 @@
                       }
 
                     </style>
-                      <div class="row" style="margin-top: 1em">
-                        <div class="col-md-12" style="display: flex; align-items: center; align-content: center">
-                           <!-- <div class="col-md-6" style="display: flex; align-items: center; align-content: center">
-                               <div class="card-body">
-                                  <h5 class="card-title">Date de début </h5>
-                                  <h5 class="card-title">Date de fin</h5>
-                                   <h5 class="card-title">Type de congé</h5>
-                               </div>
-                           </div>
-                            <div class="col-md-6" style="display: flex; align-items: center; align-content: center">
-                               <div class="card-body">
-                                  <h5 class="card-title">{{congeAttente.dateDebutConge}}</h5>
-                                  <h5 class="card-title">Date de fin</h5>
-                                   <h5 class="card-title">Statut</h5>
-                               </div>
-                           </div>-->
-                            <div class="card-body">
-                                <nav class="d-flex justify-content-center">
-                                    <ol class="breadcrumb">
-                                      <li class="breadcrumb-item"><h2 style="text-align: center">ACQUIS <p>19h</p></h2></li>
-                                      <li class="breadcrumb-item"><h2 style="text-align: center"> SOLDE 20h</h2></li>
-                                      <li class="breadcrumb-item"><h2 style="text-align: center"> PRIS 15h</h2></li>
-                                    </ol>
-                                 </nav>
+                  {% if congeAttente %}
+                        {% for conge in congeAttente %}
+                          <div class="row g-3" style="margin-top: 1em">
+                              <a href="{% url 'conge' conge.id %}">
+                                <div class="col-md-12 my-element" >
+                                    <style>
+                                          .my-element {
+                                            background-color: #9ec5fe;
+                                            transition: background-color 0.3s ease;
+                                            display: flex;
+                                            align-items: center;
+                                            align-content: center;/* Animation de transition en douceur */
+                                          }
+                                          .my-element:hover {
+                                            background-color: #609ab6;
+                                          }
+                                    </style>
 
-                            </div>
-                        </div>
-                        </div>
+                                    <div class="col-md-6" style="display: flex; align-items: center; align-content: center">
+                                       <div class="card-body">
+                                          <h5 class="card-title">Date de début </h5>
+                                          <h5 class="card-title">Date de fin</h5>
+                                           <h5 class="card-title">Type de congé</h5>
+                                       </div>
+                                   </div>
+                                    <div class="col-md-6" style=" align-items: center; align-content: center">
+                                       <div class="card-body">
+                                          <h5 class="card-title">{{conge.dateDebutConge}}</h5>
+                                          <h5 class="card-title">{{conge.dateFinConge}}</h5>
+                                           <h5 class="card-title">{{conge.typeConge}}</h5>
+                                       </div>
+                                    </div>
+                                </div>
+                              </a>
+
+                          </div>
+                        {% endfor %}
+                  {% endif %}
+
                   </section>
                 </div>
 
@@ -130,7 +140,6 @@
                     <table class="table table-borderless datatable datatable-table">
                         <thead>
                             <tr>
-                                <th data-sortable="true" style="width: 15.601023017902813%;"><a href="#" class="datatable-sorter">N°</a></th>
                                 <th data-sortable="true" style="width: 22.506393861892583%;"><a href="#" class="datatable-sorter">Début</a>
                                 </th><th data-sortable="true" style="width: 26.342710997442452%;"><a href="#" class="datatable-sorter">Fin</a></th>
 
@@ -138,18 +147,15 @@
                             </tr>
                         </thead>
                         <tbody>
+
+                        {% for conge in conges %}
                             <tr data-index="0">
-                                <td><a href="#">01</a></td>
-                                <td>10/02/2022</td>
-                                <td>21/02/2022</td>
-                                <td><span class="badge bg-success">Apprové</span></td>
+                                <td>{{conge.dateDebutConge}}</td>
+                                <td>{{conge.dateFinConge}}</td>
+                                <td><span class="badge bg-success">{{conge.statutConge}}</span></td>
                             </tr>
-                             <tr data-index="0">
-                                <td><a href="#">02</a></td>
-                                <td>22/06/2023</td>
-                                <td>25/06/2023</td>
-                                <td><span class="badge bg-danger">Rejeté</span></td>
-                            </tr>
+                        {% endfor %}
+
                         </tbody>
                     </table>
                 </div>
@@ -166,7 +172,7 @@
 
     </div>
     <div class="col-md-6">
-{% include 'calendrier.html' %}
+        {% include 'calendrier.html' %}
 
     </div>
 
