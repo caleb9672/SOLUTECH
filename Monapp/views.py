@@ -28,13 +28,35 @@ class Salarie(View):
 
 # classe d'évaluation des congés mappant le fichier evaluationconge.html
 class EvaluationConge(View):
-    def get(self, request):
+    def get(self, request, valeur=None):
 
+
+        if valeur==None:
+            conges = models.Conge.objects.filter(statutConge="En attente")
+            message = "Liste des congés en attentes"
+            congeCount = len(conges)
+        elif valeur == "CongeValide":
+            conges = models.Conge.objects.filter(statutConge="Approuve")
+            message = "Liste des congés validés"
+            congeCount = len(conges)
+        elif valeur == "CongeRefuse":
+            conges = models.Conge.objects.filter(statutConge="Refuser")
+            message = "Liste des congés refusés"
+            congeCount = len(conges)
         return render(request, 'evaluationconge.html', locals())
 
     def post(self, request):
 
         return redirect('conge')
+
+class CongeNotation(View):
+    def get(self, request, id):
+        conge = models.Conge.objects.get(id=id)
+        return render(request, 'congenotation.html', locals())
+
+    def post(self, request):
+
+        return redirect('congen')
 
 
 class Conge(View):
@@ -61,7 +83,7 @@ class Conge(View):
     def post(self, request, id=None):
 
         # Condition de demande de congé
-        if request.POST.get("demander_conge_btn") == "demander_conge_btn":
+        if request.POST.get("Demander un congé") == "Demander un congé":
             type = "date"
             return render(request, 'demandeConge.html', locals())
 

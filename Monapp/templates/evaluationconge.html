@@ -11,7 +11,7 @@
   <div class="row" style="margin-top: 0.075em">
     <div class="ro< g-3 card-body" style="display: flex; align-content: center; align-items: center">
       <div class="col-md-4 card-body">
-      <a href="#">
+      <a href="{% url 'evaluationConge' %}">
         <div class="col-md-12 my-element" style="text-align: center; justify-content: center">
             <style>
                   .my-element {
@@ -35,7 +35,7 @@
       </a>
       </div>
       <div class="col-md-4 card-body">
-      <a href="#">
+      <a href="{% url 'evaluationConge' 'CongeValide' %}">
         <div class="col-md-12 my-element-2" style="text-align: center; justify-content: center">
             <style>
                   .my-element-2 {
@@ -59,7 +59,7 @@
       </a>
       </div>
       <div class="col-md-4 card-body">
-      <a href="#">
+      <a href="{% url 'evaluationConge' 'CongeRefuse' %}">
         <div class="col-md-12 my-element-3" style="text-align: center; justify-content: center">
             <style>
                   .my-element-3 {
@@ -92,9 +92,10 @@
             <div class="card-body">
               <!-- Table with stripped rows -->
                 <div class="datatable-wrapper datatable-loading no-footer sortable searchable fixed-columns">
-
+                    <h5 class="card-title" style="margin-top:2em; margin-bottom: 2em">{{message}}</h5>
                 <div class="card-body">
-              <h5 class="card-title" style="margin-top:2em; margin-bottom: 2em">Default Table</h5>
+
+                  {% if conges %}
 
               <!-- Default Table -->
               <table class="table table-striped">
@@ -112,23 +113,30 @@
                 </thead>
 
                   <tbody >
+                    {% for conge in conges %}
                     <tr class="survol-couleur-table">
-                      <td>Bridie Kessler</td>
-                      <td>Informatique</td>
-                      <td>Dévelopeuse</td>
-                      <td>maternité</td>
-                      <td><a href="#">+ Voir plus</a> </td>
+                      <td>{{conge.salarieConge}}</td>
+                      <td>{{conge.salarieConge.departement}}</td>
+                      <td>{{conge.salarieConge.poste}}</td>
+                      <td>{{conge.typeConge}}</td>
+                      <td><a href="{% url 'congenotation' conge.id %}">+ Voir plus</a> </td>
                     </tr>
-                    <tr class="survol-couleur-table">
-                      <td>Jeff Johnson</td>
-                      <td>Informatique</td>
-                      <td>Analyste de données</td>
-                      <td>absence maladie</td>
-                      <td><a href="#">+ Voir plus</a> </td>
-                    </tr>
+                    {% endfor %}
                   </tbody>
 
               </table>
+                    <div class="datatable-bottom">
+                    <div class="datatable-info">
+                        Total de congés : {{congeCount}}
+                    </div>
+
+                    <nav class="datatable-pagination">
+                        <ul class="datatable-pagination-list"></ul>
+                    </nav>
+                </div>
+              {% else %}
+                Aucun congé disponible
+              {% endif %}
                 <style>
                   .survol-couleur-table:hover {
                     background-color: red;
@@ -143,15 +151,7 @@
                 </style>
               <!-- End Default Table Example -->
             </div>
-                <div class="datatable-bottom">
-                    <div class="datatable-info">
-                        Total de personnes : {{total_salaries}}
-                    </div>
 
-                    <nav class="datatable-pagination">
-                        <ul class="datatable-pagination-list"></ul>
-                    </nav>
-                </div>
             </div>
           </div>
               <!-- End Table with stripped rows -->

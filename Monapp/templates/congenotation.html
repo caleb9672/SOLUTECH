@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block content %}
+
+
+      <div class="row ">
+          <div class=" card  " style="justify-items: center; justify-content: center; display: flex">
+              <div class="card">
+                  <div class="card-body" style="width: 100%">
+
+                    <h5 class="card-title" style="text-align: center; margin-bottom: 1em; margin-top: 1em">{{conge.salarieConge}}</h5>
+                    <form class="row needs-validation" method="POST" novalidate>
+
+                             {% csrf_token %}
+
+                            <div  style="margin-bottom: 1em">
+                              <label  class="form-label">Date de début</label>
+                              <div class="input-group has-validation">
+                                <!--<span class="input-group-text" id="inputGroupPrepend">@</span>-->
+                                <input type=text name="date_debut" class="form-control"  required="" disabled value="{{conge.dateDebutConge}}">
+                                <div class="invalid-feedback">Please entrer la date de début</div>
+                              </div>
+                            </div>
+
+                            <div style="margin-bottom: 1em">
+                              <label  class="form-label">Date de fin</label>
+                              <input type={{type}} name="date_fin" class="form-control"  required="" disabled value="{{conge.dateFinConge}}">
+                              <div class="invalid-feedback">Please entrer la date de fin</div>
+                            </div>
+
+                            <div style="margin-bottom: 1em">
+                              <label  class="form-label">Type de congé</label>
+                              <input type=text name="type_conge" class="form-control"  required="" disabled value="{{conge.typeConge}}">
+                              <div class="invalid-feedback">Please entrer le type de congé</div>
+                            </div>
+
+                            <div style="margin-bottom: 1.6em">
+                              <label  class="form-label">Descriptif du congé</label>
+                              <textarea name="descriptif_conge" rows="10" disabled value="{{conge.descriptifConge}}" style="width: 100%"></textarea>
+                              <div class="invalid-feedback">Please enter your password!</div>
+                            </div>
+
+
+                      </form>
+
+                       <div style="margin-top: 2em">
+                        <div class="row g-3" style="margin-bottom: 1em">
+                            <div class="col-md-6">
+                            <input type="submit" value="Approuver" name="Rejeté" class="w-100 py-2 mb-2 btn btn-outline-success rounded-4">
+                            </div>
+                            <div class="col-md-6">
+                            <input type="submit" value="Refuser" name="Rejeté" class="w-100 py-2 mb-2 btn btn-outline-danger rounded-4">
+                            </div>
+                            <div class="col-md-12">
+                            <a href="{% url 'conge' %}" class="w-100 py-2 mb-2 btn btn-outline-primary rounded-4"><- Retour </a>
+                            </div>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+
+
+
+          </div>
+      </div>
+
+{% endblock content %}
+</body>
+</html>

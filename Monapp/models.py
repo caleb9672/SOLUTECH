@@ -115,7 +115,7 @@ class Paie(models.Model):
 class Conge(models.Model):
     statusConges = [
         ("En attente", "En attente"),
-        ("Apporouvé", "Approuve"),
+        ("Approuve", "Approuve"),
         ("Refuser", "Refuser"),
     ]
     salarieConge = models.ForeignKey(Salarie, on_delete=models.SET_NULL, null=True)

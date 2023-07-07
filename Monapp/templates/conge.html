@@ -12,9 +12,13 @@
 <div class="row g-3">
 
 {% block contentConge %}
+    <!--<form method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-outline-success" value="Demander un congé" name="Demander un congé">+ Demander un congé</button>
+    </form>-->
     <form method="POST">
         {% csrf_token %}
-        <button type="submit" class="btn btn-outline-success" value="demander_conge_btn" name="demander_conge_btn">+ Demander un congé</button>
+    <input type="submit" value="Demander un congé" name="Demander un congé" class="w-100 py-2 mb-2 btn btn-outline-primary rounded-4">
     </form>
     <hr>
     <div class="col-md-6">
